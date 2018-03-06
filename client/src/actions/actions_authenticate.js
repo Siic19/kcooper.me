@@ -6,10 +6,10 @@ import * as types from './actionTypes';
 // import jwt from "jsonwebtoken";
 // import { loginInvalidUserError, loginPasswordError } from "./actions_errors";
 
-export default function setCurrentUser(user) {
+export default function authenticateUser(values) {
   return {
     type: types.SET_CURRENT_USER,
-    user,
+    values,
   };
 }
 
