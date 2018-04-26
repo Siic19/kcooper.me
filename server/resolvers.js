@@ -6,12 +6,16 @@ export default {
 
   Query: {
     allUsers: (parent, args, { models }) => models.User.findAll(),
-    getUser: (parent, { username }, { models }) =>
-      models.User.findOne({
-        where: {
-          username,
-        },
-      }),
+    loggedInUser: (parent, args, { models, user }) => {
+      if (user) {
+        return models.User.findOne({
+          where: {
+            id: user.id,
+          },
+        });
+      }
+      return null;
+    },
   },
 
   Mutation: {

@@ -10,7 +10,7 @@ export default `
 
   type Query {
     allUsers: [User!]!
-    getUser(username: String!): User
+    loggedInUser: User
   }
 
   type Mutation {
