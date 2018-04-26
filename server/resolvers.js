@@ -1,9 +1,8 @@
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import _ from 'lodash';
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import _ from 'lodash'
 
 export default {
-
   Query: {
     allUsers: (parent, args, { models }) => models.User.findAll(),
     loggedInUser: (parent, args, { models, user }) => {
@@ -12,9 +11,9 @@ export default {
           where: {
             id: user.id,
           },
-        });
+        })
       }
-      return null;
+      return null
     },
   },
 
@@ -24,19 +23,19 @@ export default {
     deleteUser: (parent, args, { models }) =>
       models.User.destroy({ where: args }),
     register: async (parent, args, { models }) => {
-      const user = args;
-      user.password = await bcrypt.hash(user.password, 12);
-      return models.User.create(user);
+      const user = args
+      user.password = await bcrypt.hash(user.password, 12)
+      return models.User.create(user)
     },
     login: async (parent, { email, password }, { models, SECRET }) => {
-      const user = await models.User.findOne({ where: { email } });
+      const user = await models.User.findOne({ where: { email } })
       if (!user) {
-        throw new Error('No user with that email');
+        throw new Error('No user with that email')
       }
 
-      const valid = await bcrypt.compare(password, user.password);
+      const valid = await bcrypt.compare(password, user.password)
       if (!valid) {
-        throw new Error('Incorrect password');
+        throw new Error('Incorrect password')
       }
 
       const token = jwt.sign(
@@ -45,9 +44,13 @@ export default {
         {
           expiresIn: '1y',
         },
-      );
+      )
 
-      return token;
+      return token
+    },
+    createPost: async (parent, args, { models }) => {
+      const post = args
+      return models.Post.create(post)
     },
   },
-};
+}
