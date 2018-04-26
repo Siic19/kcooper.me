@@ -26,10 +26,13 @@ class NewPost extends React.Component {
       variables: { title },
     })
 
+    console.log(response);
+    
+
   }
 
   render() {
-    const { email, password } = this
+    const { title } = this
     return (
       <Container text>
         <Header as="h2">Login</Header>
