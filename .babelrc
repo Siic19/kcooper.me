@@ -1,0 +1,10 @@
+{
+    "presets": [
+      "react",
+      "env",
+      ["es2016"]
+      ],
+    "plugins": [
+    ]
+  }
+  
