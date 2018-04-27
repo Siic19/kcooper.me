@@ -22,7 +22,13 @@ const SECRET = process.env.JWT_SECRET;
 const app = express();
 
 const addUser = async (req) => {
+  console.log('----------------');
+  console.log(req.headers);
+  console.log('----------------');
+  
   const token = req.headers.authorization;
+  console.log(token);
+  
   try {
     const { user } = await jwt.verify(token, SECRET);
     req.user = user;

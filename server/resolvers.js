@@ -2,6 +2,8 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import _ from 'lodash'
 
+import requiresAuth from './permissions'
+
 export default {
   Query: {
     allUsers: (parent, args, { models }) => models.User.findAll(),
@@ -48,9 +50,10 @@ export default {
 
       return token
     },
-    createPost: async (parent, args, { models }) => {
-      const post = args
-      return models.Post.create(post)
-    },
+    createPost: requiresAuth.createResolver(
+      async (parent, args, { models, user }) => {
+        return await models.Post.create(args)
+      },
+    ),
   },
 }

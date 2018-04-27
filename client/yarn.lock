@@ -292,6 +292,12 @@ apollo-client@^2.2.6:
   optionalDependencies:
     "@types/async" "2.0.47"
 
+apollo-link-context@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/apollo-link-context/-/apollo-link-context-1.0.8.tgz#c967a56ac6ed32add748937735bcb57c5cc64c95"
+  dependencies:
+    apollo-link "^1.2.2"
+
 apollo-link-dedup@^1.0.0:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.8.tgz#8c3028cf32557bd040ab6ba8856f38067bdacead"
@@ -4479,6 +4485,10 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
   dependencies:
     array-includes "^3.0.3"
+
+jwt-decode@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
 
 killable@^1.0.0:
   version "1.0.0"

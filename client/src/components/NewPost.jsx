@@ -21,14 +21,16 @@ class NewPost extends React.Component {
 
   onSubmit = async () => {
     const { title } = this
+    let response = null
 
-    const response = await this.props.mutate({
-      variables: { title },
-    })
-
-    console.log(response);
-    
-
+    try {
+      const response = await this.props.mutate({
+        variables: { title },
+      })
+    } catch (err) {
+      this.props.history.push('/login')
+      return
+    }
   }
 
   render() {
@@ -51,9 +53,9 @@ class NewPost extends React.Component {
 
 const newPostMutation = gql`
   mutation($title: String!) {
-    createPost(title: $title,) {
-        id
-        title
+    createPost(title: $title) {
+      id
+      title
     }
   }
 `
