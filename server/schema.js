@@ -16,6 +16,7 @@ export default `
   type Query {
     allUsers: [User!]!
     loggedInUser: User
+    allPosts: [Post!]!
   }
 
   type Mutation {

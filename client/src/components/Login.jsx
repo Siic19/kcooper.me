@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { Button, Input, Container, Header } from 'semantic-ui-react'

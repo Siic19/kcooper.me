@@ -17,6 +17,7 @@ export default {
       }
       return null
     },
+    allPosts: (parent, args, { models }) => models.Post.findAll(),
   },
 
   Mutation: {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { Button, Input, Container, Header } from 'semantic-ui-react'
@@ -24,10 +24,12 @@ class NewPost extends React.Component {
     let response = null
 
     try {
-      const response = await this.props.mutate({
+      response = await this.props.mutate({
         variables: { title },
       })
     } catch (err) {
+      console.log(response);
+      
       this.props.history.push('/login')
       return
     }
