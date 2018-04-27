@@ -10,6 +10,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
+import 'semantic-ui-css/semantic.min.css';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
