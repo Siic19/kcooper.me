@@ -3,3 +3,15 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.ui.segment:first-child {
+  margin-bottom: 0;
+}
+
+.masonry-cell{
+  background-color: aqua;
+}
+
+.masonry-cell2{
+  background-color: darkseagreen;
+}
