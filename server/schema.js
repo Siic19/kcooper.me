@@ -11,12 +11,13 @@ export default `
   type Post {
     id: Int!
     title: String!
+    createdAt: String!
   }
 
   type Query {
     allUsers: [User!]!
     loggedInUser: User
-    allPosts: [Post!]!
+    allPosts(last: Int): [Post!]!
   }
 
   type Mutation {

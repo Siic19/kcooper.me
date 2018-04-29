@@ -8,8 +8,8 @@ export const layoutlg = [
     { i: '7', x: 3, y: 4, w: 3, h: 2, static: true },
     { i: '8', x: 6, y: 4, w: 3, h: 2, static: true },
     { i: '9', x: 9, y: 4, w: 3, h: 2, static: true },
-    { i: '10', x: 0, y: 4, w: 3, h: 2, static: true },
-    { i: '11', x: 3, y: 4, w: 3, h: 2, static: true },
-    { i: '12', x: 6, y: 4, w: 3, h: 2, static: true },
-    { i: '13', x: 9, y: 4, w: 3, h: 2, static: true },
+    { i: '10', x: 0, y: 6, w: 3, h: 2, static: true },
+    { i: '11', x: 3, y: 6, w: 3, h: 2, static: true },
+    { i: '12', x: 6, y: 6, w: 3, h: 2, static: true },
+    { i: '13', x: 9, y: 6, w: 3, h: 2, static: true },
   ]

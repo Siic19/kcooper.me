@@ -17,7 +17,18 @@ export default {
       }
       return null
     },
-    allPosts: (parent, args, { models }) => models.Post.findAll(),
+    allPosts: (parent, args, { models }) => {
+      // if args are given with the query (last: 10) it will return the last 10 posts
+      if(!args) {
+        return models.Post.findAll() 
+      } else {
+        return models.Post.findAll({
+          limit: args.last,
+          order: [ [ 'createdAt', 'DESC' ]]
+        });
+      }
+      
+    },
   },
 
   Mutation: {

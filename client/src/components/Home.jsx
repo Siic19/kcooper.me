@@ -10,12 +10,13 @@ const ResponsiveGridLayout = WidthProvider(Responsive)
 
 class Home extends Component {
   render() {
-
     const layouts = { lg: layoutlg }
 
     return (
       <div>
-        <Query query={allPostsQuery} pollInterval={500}>
+        <Query query={allPostsQuery} 
+        // pollInterval={500}
+        >
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
             if (error) return `Error! ${error.message}`
@@ -48,7 +49,7 @@ class Home extends Component {
 
 const allPostsQuery = gql`
   {
-    allPosts {
+    allPosts(last: 12) {
       id
       title
     }
