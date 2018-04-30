@@ -17,6 +17,10 @@ body {
   background-color: darkseagreen;
 }
 
+.avatar {
+  width: 30%;
+}
+
 @media all and (max-width: 1200px) {
   .react-draggable {
     display: none;

@@ -6,6 +6,8 @@ import { lg, md, sm, xs, xxs } from '../lib/gridLayouts'
 
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
+import avatar from '../images/kelsey_avatar.svg'
+
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 class Home extends Component {
@@ -29,8 +31,8 @@ class Home extends Component {
                   breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                   cols={{ lg: 12, md: 9, sm: 6, xs: 4, xxs: 2 }}
                 >
-                  <div className="masonry-cell" key="1">
-                    a
+                  <div className="masonry-cell me" key="1">
+                    <div className="avatar"><img src={avatar} alt="Kelsey Cooper Avatar"/></div>
                   </div>
                   {data.allPosts.map((post, index) => (
                     <div className="masonry-cell2" id={(index + 2).toString()} key={(index + 2).toString()}>
