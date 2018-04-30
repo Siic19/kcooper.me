@@ -5,12 +5,18 @@ body {
   background-color: pink;
 }
 
+h1 {
+  font-family: 'Righteous', cursive;
+  color: blue;
+}
+
 .ui.segment:first-child {
   margin-bottom: 0;
 }
 
 .masonry-cell {
-  background-color: aqua;
+  padding: 20px;
+  background-color: #E8E8E8;
 }
 
 .masonry-cell2 {
@@ -19,6 +25,7 @@ body {
 
 .avatar {
   width: 30%;
+  float: left
 }
 
 @media all and (max-width: 1200px) {

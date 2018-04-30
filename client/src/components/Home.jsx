@@ -32,7 +32,8 @@ class Home extends Component {
                   cols={{ lg: 12, md: 9, sm: 6, xs: 4, xxs: 2 }}
                 >
                   <div className="masonry-cell me" key="1">
-                    <div className="avatar"><img src={avatar} alt="Kelsey Cooper Avatar"/></div>
+                    <div className="avatar"><img src={avatar} alt="Kelsey Cooper"/></div>
+                    <div><h1>About Kelsey Cooper</h1></div>
                   </div>
                   {data.allPosts.map((post, index) => (
                     <div className="masonry-cell2" id={(index + 2).toString()} key={(index + 2).toString()}>
