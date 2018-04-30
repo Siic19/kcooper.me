@@ -2,16 +2,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: pink;
 }
 
 .ui.segment:first-child {
   margin-bottom: 0;
 }
 
-.masonry-cell{
+.masonry-cell {
   background-color: aqua;
 }
 
-.masonry-cell2{
+.masonry-cell2 {
   background-color: darkseagreen;
+}
+
+@media all and (max-width: 1200px) {
+  .react-draggable {
+    display: none;
+  }
 }

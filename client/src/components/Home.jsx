@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql, Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { layoutlg } from '../lib/gridLayouts'
+import { lg, md, sm, xs, xxs } from '../lib/gridLayouts'
 
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
@@ -10,7 +10,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive)
 
 class Home extends Component {
   render() {
-    const layouts = { lg: layoutlg }
+    const layouts = { lg, md, sm, xs, xxs }
 
     return (
       <div>
@@ -27,13 +27,13 @@ class Home extends Component {
                   className="layout"
                   layouts={layouts}
                   breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-                  cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+                  cols={{ lg: 12, md: 9, sm: 6, xs: 4, xxs: 2 }}
                 >
                   <div className="masonry-cell" key="1">
                     a
                   </div>
                   {data.allPosts.map((post, index) => (
-                    <div className="masonry-cell2" key={(index + 2).toString()}>
+                    <div className="masonry-cell2" id={(index + 2).toString()} key={(index + 2).toString()}>
                       {post.title}
                     </div>
                   ))}
