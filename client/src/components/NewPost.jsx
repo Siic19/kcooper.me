@@ -1,7 +1,6 @@
 import React from 'react'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
-import { Button, Input, Container, Header } from 'semantic-ui-react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -38,17 +37,18 @@ class NewPost extends React.Component {
   render() {
     const { title } = this
     return (
-      <Container text>
-        <Header as="h2">Login</Header>
-        <Input
-          name="title"
-          onChange={this.onChange}
-          value={title}
-          placeholder="title"
-          fluid
-        />
-        <Button onClick={this.onSubmit}>Submit</Button>
-      </Container>
+      <div>fix with bootstrap</div>
+      // <Container text>
+      //   <Header as="h2">Login</Header>
+      //   <Input
+      //     name="title"
+      //     onChange={this.onChange}
+      //     value={title}
+      //     placeholder="title"
+      //     fluid
+      //   />
+      //   <Button onClick={this.onSubmit}>Submit</Button>
+      // </Container>
     )
   }
 }

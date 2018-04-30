@@ -1,10 +1,10 @@
 import React from 'react';
-import Nav from './Nav';
+import Navigation from './Nav';
 import Main from './Main';
 
 const App = () => (
   <div>
-    <Nav />
+    <Navigation />
     <Main />
   </div>
 );

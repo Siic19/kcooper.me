@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, Segment } from 'semantic-ui-react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+// import { Menu, Segment } from 'semantic-ui-react'
 
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 
-export default class Nav extends React.Component {
+import { LinkContainer } from 'react-router-bootstrap'
+
+export default class Navigation extends React.Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -12,38 +15,42 @@ export default class Nav extends React.Component {
     const { activeItem } = this.state
 
     return (
-      <Segment inverted>
-        <Menu inverted pointing secondary>
-          <Menu.Item as={Link} to='/' name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Item as={Link} to='/login'name='login' active={activeItem === 'login'} onClick={this.handleItemClick} />
-          <Menu.Item as={Link} to='/new-post'name='new post' active={activeItem === 'new post'} onClick={this.handleItemClick} />
-        </Menu>
-      </Segment>
+      <div>
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <LinkContainer to="/">
+              <Navbar.Brand>
+                <Link to={'/'}>KCOOPER.ME</Link>
+              </Navbar.Brand>
+            </LinkContainer>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <LinkContainer to="/about-me">
+                <NavItem eventKey={1}>About Me</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/posts">
+                <NavItem eventKey={2}>Posts</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/contact">
+                <NavItem eventKey={3}>Contact</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/new-post">
+                <NavItem eventKey={4}>New Post</NavItem>
+              </LinkContainer>
+            </Nav>
+            <Nav pullRight>
+              <LinkContainer to="/login">
+                <NavItem eventKey={5}>Login</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/logout">
+                <NavItem eventKey={6}>Logout</NavItem>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
     )
   }
 }
-
-// const Nav = () => (
-//         <div>
-//   <Segment inverted>
-//         <Menu inverted pointing secondary>
-//           <Menu.Item name='home' />
-//           <Menu.Item name='messages' />
-//           <Menu.Item name='friends' />
-//         </Menu>
-//       </Segment>
-//     <ul>
-//       <li>
-//         <Link to="/">Home</Link>
-//       </li>
-//       <li>
-//         <Link to="/login">Login</Link>
-//       </li>
-//       <li>
-//         <Link to="/new-post">New Post</Link>
-//       </li>
-//     </ul>
-//   </div>
-// );
-
-// export default Nav;
