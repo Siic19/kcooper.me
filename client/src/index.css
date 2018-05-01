@@ -21,6 +21,11 @@ body {
   margin-bottom: 0;
 }
 
+.cell {
+  width: 100%;
+  height: 100%;
+}
+
 .masonry-cell {
   padding: 20px;
   background-color: #FFF;

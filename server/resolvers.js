@@ -27,8 +27,16 @@ export default {
           order: [ [ 'createdAt', 'DESC' ]]
         });
       }
-      
     },
+    findPost: (parent, args, { models }) => {
+      console.log(typeof args.slug);
+      
+      return models.Post.findOne({
+        where: {
+          title: args.slug
+        }
+      })
+    }
   },
 
   Mutation: {

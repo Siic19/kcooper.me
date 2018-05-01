@@ -45,7 +45,7 @@ class Login extends React.Component {
             onChange={this.onChange}
             value={email}
             placeholder="Email"
-            fluid
+          
           />
         </div>
         <div className="input">
@@ -55,7 +55,7 @@ class Login extends React.Component {
             value={password}
             type="password"
             placeholder="Password"
-            fluid
+  
           />
         </div>
         <Button onClick={this.onSubmit}>Submit</Button>

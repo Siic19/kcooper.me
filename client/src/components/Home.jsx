@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { graphql, Query } from 'react-apollo'
+import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-
+import { Link } from 'react-router-dom'
 import { lg, md, sm, xs, xxs } from '../lib/gridLayouts'
 
 import { Responsive, WidthProvider } from 'react-grid-layout'
@@ -39,12 +39,16 @@ class Home extends Component {
                   </div>
                   {data.allPosts.map((post, index) => (
                     <div
-                      className="masonry-cell2"
-                      id={(index + 2).toString()}
-                      key={(index + 2).toString()}
-                    >
-                      {post.title}
+                        className="masonry-cell2"
+                        id={(index + 2).toString()}
+                        key={(index + 2).toString()}
+                      >
+                    <Link to={{ pathname: `/posts/${post.title}` }}>
+                    <div className="cell">
+                        {post.title}
                     </div>
+                    </Link>
+                      </div>
                   ))}
                 </ResponsiveGridLayout>
               </div>

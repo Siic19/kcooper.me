@@ -18,6 +18,7 @@ export default `
     allUsers: [User!]!
     loggedInUser: User
     allPosts(last: Int): [Post!]!
+    findPost(slug: String!): Post!
   }
 
   type Mutation {

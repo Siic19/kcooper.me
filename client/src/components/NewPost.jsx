@@ -29,8 +29,8 @@ class NewPost extends React.Component {
         variables: { title },
       })
     } catch (err) {
-      console.log(response);
-      
+      console.log(response)
+
       this.props.history.push('/login')
       return
     }
@@ -40,20 +40,19 @@ class NewPost extends React.Component {
     const { title } = this
     return (
       <div className="container">
-      <div className="page-header">
-        <h1>New Post</h1>
+        <div className="page-header">
+          <h1>New Post</h1>
+        </div>
+        <div className="input">
+          <Input
+            name="title"
+            onChange={this.onChange}
+            value={title}
+            placeholder="title"
+          />
+        </div>
+        <Button onClick={this.onSubmit}>Submit</Button>
       </div>
-      <div className="input">
-      <Input
-          name="title"
-          onChange={this.onChange}
-          value={title}
-          placeholder="title"
-          fluid
-        />
-      </div>
-      <Button onClick={this.onSubmit}>Submit</Button>
-    </div>
     )
   }
 }

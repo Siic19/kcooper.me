@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Home from './Home'
 import NewPost from './NewPost'
+import Post from './Post'
 import decode from 'jwt-decode'
 
 const isAuthenticated = () => {
@@ -39,6 +40,7 @@ const Main = () => (
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/new-post" exact component={NewPost} />
+      <Route path="/posts/:slug" component={Post} />
     </Switch>
   </main>
 )
