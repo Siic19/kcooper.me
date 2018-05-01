@@ -11,6 +11,8 @@ export default `
   type Post {
     id: Int!
     title: String!
+    slug: String!
+    category: String!
     createdAt: String!
   }
 
@@ -26,6 +28,6 @@ export default `
     deleteUser(username: String!): Int!
     register(username: String!, email: String!, password: String!): User!
     login(email: String!, password: String!): String! 
-    createPost(title: String!): Post!
+    createPost(title: String!, slug: String!, category: String!): Post!
   }
 `;

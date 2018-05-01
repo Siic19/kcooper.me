@@ -33,7 +33,7 @@ export default {
       
       return models.Post.findOne({
         where: {
-          title: args.slug
+          slug: args.slug
         }
       })
     }

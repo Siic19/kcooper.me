@@ -43,7 +43,7 @@ class Home extends Component {
                         id={(index + 2).toString()}
                         key={(index + 2).toString()}
                       >
-                    <Link to={{ pathname: `/posts/${post.title}` }}>
+                    <Link to={{ pathname: `/posts/${post.slug}` }}>
                     <div className="cell">
                         {post.title}
                     </div>
@@ -65,6 +65,7 @@ const allPostsQuery = gql`
     allPosts(last: 12) {
       id
       title
+      slug
     }
   }
 `

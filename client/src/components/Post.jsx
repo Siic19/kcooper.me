@@ -7,26 +7,27 @@ class Post extends Component {
     console.log(this.props.match.params.slug)
 
     return (
-        <div className="container">
-      <Query
-        query={allPostsQuery}
-        variables={{ slug: this.props.match.params.slug }}
-        // pollInterval={500}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return 'Loading...'
-          if (error) return `Error! ${error.message}`
+      <div className="container">
+        <Query
+          query={allPostsQuery}
+          variables={{ slug: this.props.match.params.slug }}
+          // pollInterval={500}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return 'Loading...'
+            if (error) return `Error! ${error.message}`
 
-          const { title } = data.findPost
+            const { title, category } = data.findPost
 
-          return (
+            return (
               <div className="page-header">
                 <h1>{title}</h1>
+                <h3>{category}</h3>
               </div>
-          )
-        }}
-      </Query>
-        </div>
+            )
+          }}
+        </Query>
+      </div>
     )
   }
 }
@@ -36,6 +37,7 @@ const allPostsQuery = gql`
     findPost(slug: $slug) {
       id
       title
+      category
     }
   }
 `
