@@ -1,13 +1,20 @@
+@import '~antd/dist/antd.css';
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: pink;
+  background-color: #E8E8E8;
 }
 
-h1 {
-  font-family: 'Righteous', cursive;
-  color: blue;
+.container {
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.input {
+  margin-bottom: 16px;
 }
 
 .ui.segment:first-child {
@@ -16,7 +23,7 @@ h1 {
 
 .masonry-cell {
   padding: 20px;
-  background-color: #E8E8E8;
+  background-color: #FFF;
 }
 
 .masonry-cell2 {

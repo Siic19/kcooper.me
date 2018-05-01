@@ -4,6 +4,8 @@ import { observer } from 'mobx-react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import { Input, Button } from 'antd'
+
 class NewPost extends React.Component {
   constructor(props) {
     super(props)
@@ -37,18 +39,21 @@ class NewPost extends React.Component {
   render() {
     const { title } = this
     return (
-      <div>fix with bootstrap</div>
-      // <Container text>
-      //   <Header as="h2">Login</Header>
-      //   <Input
-      //     name="title"
-      //     onChange={this.onChange}
-      //     value={title}
-      //     placeholder="title"
-      //     fluid
-      //   />
-      //   <Button onClick={this.onSubmit}>Submit</Button>
-      // </Container>
+      <div className="container">
+      <div className="page-header">
+        <h1>New Post</h1>
+      </div>
+      <div className="input">
+      <Input
+          name="title"
+          onChange={this.onChange}
+          value={title}
+          placeholder="title"
+          fluid
+        />
+      </div>
+      <Button onClick={this.onSubmit}>Submit</Button>
+    </div>
     )
   }
 }
