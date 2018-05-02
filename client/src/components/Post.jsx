@@ -4,13 +4,16 @@ import gql from 'graphql-tag'
 
 class Post extends Component {
   render() {
-    console.log(this.props.match.params.slug)
 
+    // Because we are using a HOC for animated transitions, we have to get
+    // the pathname from the location.
+    const slug = this.props.location.pathname.split("/")
+  
     return (
       <div className="container">
         <Query
           query={allPostsQuery}
-          variables={{ slug: this.props.match.params.slug }}
+          variables={{ slug: slug[2] }}
           // pollInterval={500}
         >
           {({ loading, error, data }) => {
