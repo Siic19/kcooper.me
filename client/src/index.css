@@ -1,10 +1,13 @@
 @import '~antd/dist/antd.css';
 
+html { height:100%; }
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background-color: #e8e8e8;
+  height: 100%;
 }
 
 .nav {
@@ -23,6 +26,68 @@ body {
   top: 0;
   bottom: 0;
   margin-top: 75px;
+}
+
+.post-container {
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+
+  height: 100%;
+}
+
+.post-background {
+  background: repeating-linear-gradient(
+  45deg,
+  #b7dff1,
+  #b7dff1 10px,
+  lightskyblue 10px,
+  lightskyblue 20px
+);
+}
+
+.post-col-left {
+  height: 100%;
+}
+
+.post-col-right {
+  background-color: lightskyblue;
+  height: 3000px;
+}
+
+.post-title {
+  background-color: #fff;
+  padding: 30px 30px 0 30px;
+  margin-left: 20px;
+}
+
+.post-title h1 {
+  font-size: 8em;
+  line-height: .69;
+  color: gray;
+}
+
+.post-content {
+  background-color: white;
+  height: 100%;
+  padding: 30px;
+  margin-left: 20px;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  font-size: 24em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 40px;
 }
 
 .input {
@@ -54,11 +119,11 @@ body {
 
 .switch-wrapper {
   display: grid;
-  grid-template-areas: "test"
+  grid-template-areas: 'switch';
 }
 
 .switch-wrapper > div {
-  grid-area: test;
+  grid-area: switch;
 }
 
 @media all and (max-width: 1200px) {
