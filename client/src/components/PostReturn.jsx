@@ -17,6 +17,7 @@ const PostReturn = (props) => {
         <Col className="post-col-right" style={{"background-color": `${primaryColor}`}} xs={24} sm={24} md={17} lg={18} xl={19}>
           <div className="post-title" >
             <h1 style={{"color": `${primaryColor}`}}>{title}</h1>
+            <hr style={{"border-color": `${primaryColor}`, "width": "80%", "float": "left"}}/>
           </div>
           <div className="post-content">
             <p>
