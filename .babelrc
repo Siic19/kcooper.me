@@ -5,6 +5,7 @@
       ["es2016"]
       ],
     "plugins": [
+      ["import", {"libraryName": "antd", "style": true }]
     ]
   }
   

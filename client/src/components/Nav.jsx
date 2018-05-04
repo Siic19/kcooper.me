@@ -13,16 +13,15 @@ const Navigation = () => {
   return (
     <div>
       <Header className="header">
-        <div className="logo" />
+      
         <Menu
-          theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['/'+href]}
           selectedKeys={['/'+href]}
           style={{ lineHeight: '64px' }}
         >
           <Menu.Item key="/">
-            <Link to="/">KCOOPER.ME</Link>
+            <Link to="/" className="logo">KCOOPER.ME</Link>
           </Menu.Item>
           <Menu.Item key="/new-post">
             <Link to="/new-post">New Post</Link>
