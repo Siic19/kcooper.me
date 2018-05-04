@@ -7,6 +7,9 @@ import { Layout, Menu } from 'antd'
 const { Header } = Layout
 
 const Navigation = () => {
+  let href = window.location.href.split('/')
+  href = href[3]
+  
   return (
     <div>
       <Header className="header">
@@ -14,16 +17,17 @@ const Navigation = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['/'+href]}
+          selectedKeys={['/'+href]}
           style={{ lineHeight: '64px' }}
         >
-          <Menu.Item key="1">
+          <Menu.Item key="/">
             <Link to="/">KCOOPER.ME</Link>
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item key="/new-post">
             <Link to="/new-post">New Post</Link>
           </Menu.Item>
-          <Menu.Item key="3">
+          <Menu.Item key="/login">
             <Link to="/login">Login</Link>
           </Menu.Item>
         </Menu>

@@ -21,7 +21,7 @@ class NewPost extends React.Component {
   }
 
   onChange = (e) => {
-    const { name, value, markdown } = e.target
+    const { name, value } = e.target
     this[name] = value
   }
 
