@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import _ from 'lodash'
 
+
 import requiresAuth from './permissions'
 
 export default {
@@ -72,6 +73,15 @@ export default {
     },
     createPost: requiresAuth.createResolver(
       async (parent, args, { models, user }) => {
+
+        console.log('~~~~~~~~~~~~~~~~~~~~');
+        
+        console.log(args.markdown);
+
+        console.log('~~~~~~~~~~~~~~~~~~~~');
+        
+        // const { title, slug, category, markdown} = args
+        
         return await models.Post.create(args)
       },
     ),

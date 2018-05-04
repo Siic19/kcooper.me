@@ -24,12 +24,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 10px;
   padding: 20px;
   background-color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: 75px;
 }
 
 .post-container {
@@ -60,6 +54,16 @@ h1, h2, h3, h4, h5, h6 {
   width: 80%;
 }
 
+.post-title hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+    width: 80%;
+}
+
 .post-content {
   background-color: white;
   height: auto;
@@ -67,6 +71,43 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 20px;
   font-size: 1.2em;
   line-height: 2;
+  min-height: 1900px;
+}
+
+.markdown {
+  width: 80%;
+}
+
+pre code {
+  font-family: 'Courier', sans-serif;
+  font-size: 1.4em;
+  color: #52595d;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #2C303B;
+  padding: 5px;
+  display: inline-block;
+  margin: 0px;
+}
+
+pre {
+  border: 1.2 em solid #cacaca;
+  line-height: 1.2em;
+  font: 12px "Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+  padding: 10px;
+  overflow:auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #2C303B;
+  color: #393939;
+  margin: 0px;
+  margin-bottom: 10px;
+  width: 80%;
 }
 
 .post-content p {

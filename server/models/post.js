@@ -3,6 +3,7 @@ export default (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       slug: DataTypes.STRING,
       category: DataTypes.STRING,
+      markdown: DataTypes.TEXT,
     });
   
     return Post;

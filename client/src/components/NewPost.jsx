@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import { Input, Button, Select } from 'antd'
+const { TextArea } = Input
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -14,21 +15,22 @@ class NewPost extends React.Component {
       title: '',
       slug: '',
       category: '',
+      markdown: '',
     })
   }
 
   onChange = (e) => {
-    const { name, value } = e.target
+    const { name, value, markdown } = e.target
     this[name] = value
   }
 
   onSubmit = async () => {
-    const { title, slug, category } = this
+    const { title, slug, category, markdown } = this
     let response = null
-    
+
     try {
       response = await this.props.mutate({
-        variables: { title, slug, category },
+        variables: { title, slug, category, markdown },
       })
     } catch (err) {
       console.log(response)
@@ -43,8 +45,8 @@ class NewPost extends React.Component {
   }
 
   render() {
-    const { title, slug } = this
-    const Option = Select.Option;
+    const { title, slug, markdown } = this
+    const Option = Select.Option
     return (
       <div className="container">
         <div className="page-header">
@@ -67,17 +69,26 @@ class NewPost extends React.Component {
           />
         </div>
         <div className="input">
-        <Select
-          showSearch
-          style={{ width: 200 }}
-          placeholder="Select category"
-          optionFilterProp="children"
-          onChange={this.handleSelectChange}
-        >
-          <Option value="programming">Programming</Option>
-          <Option value="design">Design</Option>
-          <Option value="other">Other</Option>
-        </Select>
+          <Select
+            showSearch
+            style={{ width: 200 }}
+            placeholder="Select category"
+            optionFilterProp="children"
+            onChange={this.handleSelectChange}
+          >
+            <Option value="programming">Programming</Option>
+            <Option value="design">Design</Option>
+            <Option value="other">Other</Option>
+          </Select>
+        </div>
+        <div className="input">
+          <TextArea
+            rows={40}
+            name="markdown"
+            onChange={this.onChange}
+            value={markdown}
+            placeholder="Write in markdown!"
+          />
         </div>
         <Button onClick={this.onSubmit}>Submit</Button>
       </div>
@@ -86,8 +97,8 @@ class NewPost extends React.Component {
 }
 
 const newPostMutation = gql`
-  mutation($title: String!, $slug: String!, $category: String!) {
-    createPost(title: $title, slug: $slug, category: $category) {
+  mutation($title: String!, $slug: String!, $category: String!, $markdown: String! ) {
+    createPost(title: $title, slug: $slug, category: $category, markdown: $markdown) {
       id
       title
     }

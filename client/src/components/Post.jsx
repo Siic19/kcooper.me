@@ -18,18 +18,18 @@ class Post extends Component {
             if (loading) return 'Loading...'
             if (error) return `Error! ${error.message}`
 
-            const { title, category } = data.findPost
+            const { title, category, markdown } = data.findPost
 
             return (
               <div>
                 {(() => {
                   switch (category) {
                     case 'other':
-                      return <PostReturn title={title} category={category} primaryColor="lightskyblue" secondaryColor="#b7dff1"/>
+                      return <PostReturn title={title} category={category} markdown={markdown} primaryColor="lightskyblue" secondaryColor="#b7dff1"/>
                     case 'design':
-                      return <PostReturn title={title} category={category} primaryColor="blue" secondaryColor="red"/>
+                      return <PostReturn title={title} category={category} markdown={markdown} primaryColor="blue" secondaryColor="red"/>
                     case 'programming':
-                      return <PostReturn title={title} category={category} primaryColor="pink" secondaryColor="tomato"/>
+                      return <PostReturn title={title} category={category} markdown={markdown} primaryColor="pink" secondaryColor="tomato"/>
                     default:
                       return '#FFFFFF'
                   }
@@ -49,6 +49,7 @@ const allPostsQuery = gql`
       id
       title
       category
+      markdown
     }
   }
 `
