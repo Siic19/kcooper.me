@@ -8,11 +8,10 @@ class Post extends Component {
     const slug = this.props.match.params.slug
 
     return (
-      <div className="post-container"> 
+      <div className="post-container">
         <Query
           query={allPostsQuery}
           variables={{ slug: slug }}
-          // pollInterval={500}
         >
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
@@ -25,13 +24,45 @@ class Post extends Component {
                 {(() => {
                   switch (category) {
                     case 'other':
-                      return <PostReturn title={title} category={category} markdown={markdown} primaryColor="lightskyblue" secondaryColor="#b7dff1"/>
+                      return (
+                        <PostReturn
+                          title={title}
+                          category={category}
+                          markdown={markdown}
+                          primaryColor="#E6E6E6"
+                          secondaryColor="#98E5DC"
+                        />
+                      )
                     case 'design':
-                      return <PostReturn title={title} category={category} markdown={markdown} primaryColor="blue" secondaryColor="red"/>
+                      return (
+                        <PostReturn
+                          title={title}
+                          category={category}
+                          markdown={markdown}
+                          primaryColor="#E6E6E6"
+                          secondaryColor="#AFE298"
+                        />
+                      )
                     case 'programming':
-                      return <PostReturn title={title} category={category} markdown={markdown} primaryColor="pink" secondaryColor="tomato"/>
+                      return (
+                        <PostReturn
+                          title={title}
+                          category={category}
+                          markdown={markdown}
+                          primaryColor="#E6E6E6"
+                          secondaryColor="#BCADEA"
+                        />
+                      )
                     default:
-                      return '#FFFFFF'
+                      return (
+                        <PostReturn
+                          title={title}
+                          category={category}
+                          markdown={markdown}
+                          primaryColor="#E6E6E6"
+                          secondaryColor="#F9BB62"
+                        />
+                      )
                   }
                 })()}
               </div>
