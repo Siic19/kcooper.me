@@ -6,6 +6,8 @@ import { lg, md, sm, xs, xxs } from '../lib/gridLayouts'
 
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
+import { Helmet } from 'react-helmet'
+
 import avatar from '../images/kelsey_avatar.svg'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -26,6 +28,9 @@ class Home extends Component {
 
             return (
               <div>
+                <Helmet>
+                  <title>KCooper.me | Home</title>
+                </Helmet>
                 <ResponsiveGridLayout
                   className="layout"
                   layouts={layouts}
@@ -39,16 +44,14 @@ class Home extends Component {
                   </div>
                   {data.allPosts.map((post, index) => (
                     <div
-                        className="masonry-cell2"
-                        id={(index + 2).toString()}
-                        key={(index + 2).toString()}
-                      >
-                    <Link to={{ pathname: `/posts/${post.slug}` }}>
-                    <div className="cell">
-                        {post.title}
+                      className="masonry-cell2"
+                      id={(index + 2).toString()}
+                      key={(index + 2).toString()}
+                    >
+                      <Link to={{ pathname: `/posts/${post.slug}` }}>
+                        <div className="cell">{post.title}</div>
+                      </Link>
                     </div>
-                    </Link>
-                      </div>
                   ))}
                 </ResponsiveGridLayout>
               </div>

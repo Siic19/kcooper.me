@@ -6,6 +6,8 @@ import gql from 'graphql-tag'
 
 import { Input, Button } from 'antd'
 
+import { Helmet } from 'react-helmet'
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -36,6 +38,9 @@ class Login extends React.Component {
     const { email, password } = this
     return (
       <div className="container">
+        <Helmet>
+          <title>KCooper.me | Login</title>
+        </Helmet>
         <div className="page-header">
           <h1>Login</h1>
         </div>

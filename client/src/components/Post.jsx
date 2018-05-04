@@ -3,16 +3,15 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import PostReturn from './PostReturn'
 
+import { Helmet } from 'react-helmet'
+
 class Post extends Component {
   render() {
     const slug = this.props.match.params.slug
 
     return (
       <div className="post-container">
-        <Query
-          query={allPostsQuery}
-          variables={{ slug: slug }}
-        >
+        <Query query={allPostsQuery} variables={{ slug: slug }}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
             if (error) return `Error! ${error.message}`
@@ -21,6 +20,9 @@ class Post extends Component {
 
             return (
               <div>
+                <Helmet>
+                  <title>KCooper.me | {title}</title>
+                </Helmet>
                 {(() => {
                   switch (category) {
                     case 'other':

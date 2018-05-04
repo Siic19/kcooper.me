@@ -57,6 +57,13 @@ function bounce(val) {
   });
 }
 
+function bounceLeave(val) {
+  return spring(val, {
+    stiffness: 600,
+    damping: 60
+  });
+}
+
 // child matches will...
 const bounceTransition = {
   // start in a transparent, upscaled state
@@ -66,8 +73,8 @@ const bounceTransition = {
   },
   // leave in a transparent, downscaled state
   atLeave: {
-    opacity: bounce(0),
-    scale: bounce(0.8)
+    opacity: bounceLeave(0),
+    scale: bounceLeave(0.8)
   },
   // and rest at an opaque, normally-scaled state
   atActive: {

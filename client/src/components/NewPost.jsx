@@ -3,6 +3,7 @@ import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { Helmet } from 'react-helmet'
 
 import { Input, Button, Select } from 'antd'
 const { TextArea } = Input
@@ -49,6 +50,9 @@ class NewPost extends React.Component {
     const Option = Select.Option
     return (
       <div className="container">
+        <Helmet>
+          <title>KCooper.me | New Post</title>
+        </Helmet>
         <div className="page-header">
           <h1>New Post</h1>
         </div>
@@ -97,8 +101,18 @@ class NewPost extends React.Component {
 }
 
 const newPostMutation = gql`
-  mutation($title: String!, $slug: String!, $category: String!, $markdown: String! ) {
-    createPost(title: $title, slug: $slug, category: $category, markdown: $markdown) {
+  mutation(
+    $title: String!
+    $slug: String!
+    $category: String!
+    $markdown: String!
+  ) {
+    createPost(
+      title: $title
+      slug: $slug
+      category: $category
+      markdown: $markdown
+    ) {
       id
       title
     }

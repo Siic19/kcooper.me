@@ -45,7 +45,7 @@ const PostReturn = (props) => {
           xl={19}
         >
           <div className="post-title">
-            <h1 style={{ color: `${primaryColor}` }}>{title}</h1>
+            <h1 style={{ color: `${secondaryColor}` }}>{title}</h1>
             <hr />
           </div>
           <div className="post-content">
