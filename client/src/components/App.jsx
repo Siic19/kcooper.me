@@ -11,6 +11,7 @@ import NewPost from './NewPost'
 import Post from './Post'
 import decode from 'jwt-decode'
 
+
 const isAuthenticated = () => {
   const token = localStorage.getItem('token')
   try {
@@ -86,6 +87,7 @@ const bounceTransition = {
 
 const App = (props) => {
   return (
+
     <Router>
       <Route
         render={({ location }) => (
@@ -100,7 +102,7 @@ const App = (props) => {
               atActive={bounceTransition.atActive}
               mapStyles={mapStyles}
               className="switch-wrapper"
-            >
+              >
               <Route exact path="/posts/:slug" component={Post} />
             </AnimatedSwitch>
             <Route exact path="/" component={Home} />
