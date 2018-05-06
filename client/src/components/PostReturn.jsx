@@ -26,35 +26,49 @@ const highlight = (str, lang) => {
 const PostReturn = (props) => {
   const { title, category, primaryColor, secondaryColor, markdown } = props
   return (
-    <div
-      style={{
-        background: `repeating-linear-gradient( 45deg, ${primaryColor}, ${primaryColor} 10px, ${secondaryColor} 10px, ${secondaryColor} 20px)`,
-      }}
-    >
-      <Row>
-        <Col className="post-col-left" xs={24} sm={24} md={7} lg={6} xl={5}>
-          <div className="vertical-text">{category}</div>
+      <Row gutter={10}>
+        <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
+          <Row type="flex" justify="center" align="top">
+            <Col span={24}>
+              <div className="vertical-text">{category}</div>
+            </Col>
+          </Row>
         </Col>
-        <Col
-          className="post-col-right"
-          style={{ backgroundColor: `${primaryColor}` }}
-          xs={24}
-          sm={24}
-          md={17}
-          lg={18}
-          xl={19}
-        >
+        <Col className="post-col-right" xs={24} sm={24} md={17} lg={18} xl={19}>
           <div className="post-title">
-            <h1 style={{ color: `${secondaryColor}` }}>{title}</h1>
+            <h1>{title}</h1>
             <hr />
           </div>
           <div className="post-content">
-            <Markdown options={{ highlight }} source={markdown}></Markdown>
+            <Markdown options={{ highlight }} source={markdown} />
           </div>
         </Col>
       </Row>
-    </div>
   )
+}
+
+{
+  /* <Col className="post-col-left" xs={24} sm={24} md={7} lg={6} xl={5}>
+<div>{category}</div>
+{/* <div className="vertical-text">{category}</div> 
+</Col>
+<Col
+className="post-col-right"
+style={{ backgroundColor: `${primaryColor}` }}
+xs={24}
+sm={24}
+md={17}
+lg={18}
+xl={19}
+>
+<div className="post-title">
+  <h1 style={{ color: `${secondaryColor}` }}>{title}</h1>
+  <hr />
+</div>
+<div className="post-content">
+  <Markdown options={{ highlight }} source={markdown} />
+</div>
+</Col> */
 }
 
 export default PostReturn

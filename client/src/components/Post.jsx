@@ -11,6 +11,7 @@ class Post extends Component {
 
     return (
       <div className="post-container">
+      {/* <div> */}
         <Query query={allPostsQuery} variables={{ slug: slug }}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
@@ -31,8 +32,6 @@ class Post extends Component {
                           title={title}
                           category={category}
                           markdown={markdown}
-                          primaryColor="#E6E6E6"
-                          secondaryColor="#98E5DC"
                         />
                       )
                     case 'design':
@@ -41,8 +40,6 @@ class Post extends Component {
                           title={title}
                           category={category}
                           markdown={markdown}
-                          primaryColor="#E6E6E6"
-                          secondaryColor="#AFE298"
                         />
                       )
                     case 'programming':
@@ -51,8 +48,6 @@ class Post extends Component {
                           title={title}
                           category={category}
                           markdown={markdown}
-                          primaryColor="#E6E6E6"
-                          secondaryColor="#BCADEA"
                         />
                       )
                     default:
@@ -61,8 +56,6 @@ class Post extends Component {
                           title={title}
                           category={category}
                           markdown={markdown}
-                          primaryColor="#E6E6E6"
-                          secondaryColor="#F9BB62"
                         />
                       )
                   }
