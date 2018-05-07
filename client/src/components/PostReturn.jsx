@@ -47,28 +47,4 @@ const PostReturn = (props) => {
   )
 }
 
-{
-  /* <Col className="post-col-left" xs={24} sm={24} md={7} lg={6} xl={5}>
-<div>{category}</div>
-{/* <div className="vertical-text">{category}</div> 
-</Col>
-<Col
-className="post-col-right"
-style={{ backgroundColor: `${primaryColor}` }}
-xs={24}
-sm={24}
-md={17}
-lg={18}
-xl={19}
->
-<div className="post-title">
-  <h1 style={{ color: `${secondaryColor}` }}>{title}</h1>
-  <hr />
-</div>
-<div className="post-content">
-  <Markdown options={{ highlight }} source={markdown} />
-</div>
-</Col> */
-}
-
 export default PostReturn
