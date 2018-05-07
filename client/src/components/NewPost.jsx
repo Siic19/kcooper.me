@@ -5,8 +5,30 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Helmet } from 'react-helmet'
 
+import Markdown from 'react-remarkable'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/dracula.css'
+
 import { Input, Button, Select } from 'antd'
 const { TextArea } = Input
+
+const highlight = (str, lang) => {
+  if (lang && hljs.getLanguage(lang)) {
+    try {
+      return hljs.highlight(lang, str).value
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  try {
+    return hljs.highlightAuto(str).value
+  } catch (err) {
+    console.error(err)
+  }
+
+  return ''
+}
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -95,6 +117,11 @@ class NewPost extends React.Component {
           />
         </div>
         <Button onClick={this.onSubmit}>Submit</Button>
+        <div className="markdown-preview">
+        Post Preview:
+        <hr />
+          <Markdown options={{ highlight }} source={markdown} />
+        </div>
       </div>
     )
   }

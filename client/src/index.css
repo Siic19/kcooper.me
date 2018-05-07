@@ -198,6 +198,11 @@ pre {
   float: left;
 }
 
+.markdown-preview {
+  padding: 20px;
+  margin: 20px 0;
+}
+
 /* Footer */
 
 .footer-form h1 {
