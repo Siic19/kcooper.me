@@ -65,7 +65,7 @@ class Home extends Component {
 
 const allPostsQuery = gql`
   {
-    allPosts(last: 12) {
+    allPosts(last: 8) {
       id
       title
       slug
