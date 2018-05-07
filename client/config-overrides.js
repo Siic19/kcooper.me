@@ -12,7 +12,7 @@ module.exports = function override(config, env) {
       '@primary-color': '#64A5BC',
       '@layout-header-background': '#FFF',
       '@layout-footer-background': '#64A5BC',
-      '@layout-footer-padding': '1px 10px;',
+      '@layout-footer-padding': '1px 0px;',
     },
   })(config, env)
   return config

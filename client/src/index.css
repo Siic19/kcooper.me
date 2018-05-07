@@ -110,7 +110,7 @@ pre code {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background-color: #282B36;
+  background-color: #282b36;
   padding: 5px;
   display: inline-block;
   margin: 0px;
@@ -129,7 +129,7 @@ pre {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background-color: #282B36;
+  background-color: #282b36;
   color: #393939;
   margin: 0px;
   margin-bottom: 10px;
@@ -146,7 +146,7 @@ pre {
   line-height: 70px;
   padding-top: 15px;
   padding-right: 8px;
-  color: #64A5BC;
+  color: #64a5bc;
 }
 
 .vertical-text {
@@ -241,7 +241,7 @@ pre {
 
 .footer-form button {
   border-radius: 0px;
-  background-color: #F93887;
+  background-color: #f93887;
   width: 100%;
   padding: 10px;
   height: auto;
@@ -256,7 +256,33 @@ pre {
 }
 
 .footer-form button:hover {
-  color: #64A5BC;
+  color: #64a5bc;
+}
+
+.footer-social {
+  padding: 20px;
+  width: 100%;
+  background-color: #fff;
+  text-align: left;
+}
+
+.footer-social span {
+  font-size: 2em;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  color: #f93887;
+}
+
+.footer-social i {
+  font-size: 2em;
+  margin-top: 6px;
+  color: #f93887;
+  text-align: right;
+  width: 100%;
+}
+
+.footer-social i:hover {
+  color: #64a5bc;
 }
 
 /* Media Queries */
@@ -264,6 +290,25 @@ pre {
 @media all and (max-width: 1200px) {
   .react-draggable {
     display: none;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .footer-social {
+    text-align: center;
+    padding: 50px 0;
+    
+  }
+  .footer-social span {
+    letter-spacing: 2px;
+    font-size: 2.5em;
+
+  }
+  .footer-social i {
+    margin-top: 50px;
+    padding-bottom: 20px;
+    font-size: 3em;
+    text-align: center;
   }
 }
 
