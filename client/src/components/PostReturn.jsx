@@ -3,7 +3,7 @@ import { Row, Col } from 'antd'
 
 import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/ocean.css'
+import 'highlight.js/styles/dracula.css'
 
 const highlight = (str, lang) => {
   if (lang && hljs.getLanguage(lang)) {
@@ -24,7 +24,7 @@ const highlight = (str, lang) => {
 }
 
 const PostReturn = (props) => {
-  const { title, category, primaryColor, secondaryColor, markdown } = props
+  const { title, category, markdown } = props
   return (
       <Row gutter={10}>
         <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>

@@ -35,6 +35,12 @@ const MenuMarkup = ({
         <Menu.Item key="/login">
           <Link to="/login">Login</Link>
         </Menu.Item>
+        <Menu.Item key="/posts">
+          <Link to="/posts">Posts</Link>
+        </Menu.Item>
+        <Menu.Item style={{"float": "right"}} key="/about">
+          <Link to="/about">About Me</Link>
+        </Menu.Item>
       </Menu>
   )
 }

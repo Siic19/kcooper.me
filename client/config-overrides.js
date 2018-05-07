@@ -11,6 +11,7 @@ module.exports = function override(config, env) {
       '@body-background': '#e8e8e8',
       '@primary-color': '#64A5BC',
       '@layout-header-background': '#FFF',
+      '@layout-footer-background': '#64A5BC',
     },
   })(config, env)
   return config
