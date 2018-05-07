@@ -12,7 +12,7 @@ class FooterComponent extends Component {
       firstName: '',
       lastName: '',
       emailAddress: '',
-      companyName: '',
+      subject: '',
       text: '',
     })
   }
@@ -22,8 +22,23 @@ class FooterComponent extends Component {
     this[name] = value
   }
 
+  onSubmit = async () => {
+    const { firstName, lastName, emailAddress, subject, text } = this
+    let response = null
+
+    try {
+      response = await this.props.mutate({
+        variables: { firstName, lastName, emailAddress, subject, text },
+      })
+    } catch (err) {
+      console.log(response)
+
+      return
+    }
+  }
+
   render() {
-    const { firstName, lastName, emailAddress, companyName, text } = this
+    const { firstName, lastName, emailAddress, subject, text } = this
     return (
       <div className="footer-form">
         <h1>GET IN TOUCH</h1>
@@ -51,16 +66,17 @@ class FooterComponent extends Component {
             <Input
               name="emailAddress"
               onChange={this.onChange}
+              type="email"
               value={emailAddress}
               placeholder="Email address"
             />
           </Col>
           <Col xs={23} sm={23} md={20} lg={9} xl={7}>
             <Input
-              name="companyName"
+              name="subject"
               onChange={this.onChange}
-              value={companyName}
-              placeholder="Company name"
+              value={subject}
+              placeholder="Subject"
             />
           </Col>
         </Row>
@@ -96,8 +112,8 @@ class FooterComponent extends Component {
               </a>
             </Col>
             <Col xs={7} sm={7} md={4} lg={4} xl={3}>
-            <a href="https://www.facebook.com/SourDinosaur">
-              <Icon type="facebook" />
+              <a href="https://www.facebook.com/SourDinosaur">
+                <Icon type="facebook" />
               </a>
             </Col>
           </Row>

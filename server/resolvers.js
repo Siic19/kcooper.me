@@ -1,9 +1,17 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import _ from 'lodash'
-
+import nodemailer from 'nodemailer'
 
 import requiresAuth from './permissions'
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'kjcoop19@gmail.com',
+    pass: 'Payton20',
+  },
+})
 
 export default {
   Query: {
@@ -20,24 +28,24 @@ export default {
     },
     allPosts: (parent, args, { models }) => {
       // if args are given with the query (last: 10) it will return the last 10 posts
-      if(!args) {
-        return models.Post.findAll() 
+      if (!args) {
+        return models.Post.findAll()
       } else {
         return models.Post.findAll({
           limit: args.last,
-          order: [ [ 'createdAt', 'DESC' ]]
-        });
+          order: [['createdAt', 'DESC']],
+        })
       }
     },
     findPost: (parent, args, { models }) => {
-      console.log(typeof args.slug);
-      
+      console.log(typeof args.slug)
+
       return models.Post.findOne({
         where: {
-          slug: args.slug
-        }
+          slug: args.slug,
+        },
       })
-    }
+    },
   },
 
   Mutation: {
@@ -73,17 +81,39 @@ export default {
     },
     createPost: requiresAuth.createResolver(
       async (parent, args, { models, user }) => {
+        console.log('~~~~~~~~~~~~~~~~~~~~')
 
-        console.log('~~~~~~~~~~~~~~~~~~~~');
-        
-        console.log(args.markdown);
+        console.log(args.markdown)
 
-        console.log('~~~~~~~~~~~~~~~~~~~~');
-        
+        console.log('~~~~~~~~~~~~~~~~~~~~')
+
         // const { title, slug, category, markdown} = args
-        
+
         return await models.Post.create(args)
       },
     ),
+    sendEmail: async (parent, args, { models }) => {
+      const { firstName, lastName, emailAddress, subject, text } = args
+
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: `"${firstName} ${lastName}" - ${emailAddress}`, // sender address
+        to: 'kelsey@kcooper.me', // list of receivers
+        subject: `${subject}`, // Subject line
+        text: `${text}`, // plain text body
+        html: '<b>Hello world?</b>', // html body
+      }
+
+      // send mail with defined transport object
+      await transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error)
+        }
+        console.log('Message sent: %s', info.messageId)
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
+        return 1
+      })
+
+    },
   },
 }

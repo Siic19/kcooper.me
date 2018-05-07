@@ -30,5 +30,6 @@ export default `
     register(username: String!, email: String!, password: String!): User!
     login(email: String!, password: String!): String! 
     createPost(title: String!, slug: String!, category: String!, markdown: String!): Post!
+    sendEmail(firstName: String!, lastName: String!, emailAddress: String!, subject: String!, text: String!): Boolean!
   }
 `;

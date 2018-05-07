@@ -19,6 +19,7 @@
     "graphql-tools": "^2.21.0",
     "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.5",
+    "nodemailer": "^4.6.4",
     "pg": "^7.4.1",
     "sequelize": "^4.35.1"
   },
