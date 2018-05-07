@@ -5,6 +5,8 @@ import { observer } from 'mobx-react'
 
 import FooterContactForm from './FooterContactForm'
 
+import { BounceLoader } from 'react-spinners'
+
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -17,7 +19,13 @@ class FooterComponent extends Component {
       emailAddress: '',
       subject: '',
       text: '',
+      firstNameError: false,
+      lastNameError: false,
+      emailAddressError: false,
+      subjectError: false,
+      textError: false,
       callInProgress: false,
+      callMade: false,
     })
   }
 
@@ -26,37 +34,129 @@ class FooterComponent extends Component {
     this[name] = value
   }
 
-  onSubmit = async () => {
+  onSubmit = async (e) => {
+    console.log(e)
+
     const { firstName, lastName, emailAddress, subject, text } = this
+
+    this.firstNameError = false
+    this.lastNameError = false
+    this.emailAddressError = false
+    this.subjectError = false
+    this.textError = false
+
+    let error = false
+
     let response = null
 
-    try {
-      this.callInProgress = true
-      response = await this.props.mutate({
-        variables: { firstName, lastName, emailAddress, subject, text },
-      })
-      console.log(response.data)
-    } catch (err) {
-      console.log(response)
+    if (!firstName) {
+      this.firstNameError = true
+      error = true
+    }
 
-      return
+    if (!lastName) {
+      this.lastNameError = true
+      error = true
+    }
+
+    if (!emailAddress) {
+      this.emailAddressError = true
+      error = true
+    }
+
+    if (!subject) {
+      this.subjectError = true
+      error = true
+    }
+
+    if (!text) {
+      this.textError = true
+      error = true
+    }
+
+    if (!error) {
+      this.callInProgress = true
+      this.callMade = true
+      try {
+        response = await this.props.mutate({
+          variables: { firstName, lastName, emailAddress, subject, text },
+        })
+
+        this.callInProgress = false
+      } catch (err) {
+        console.log(err)
+
+        return
+      }
     }
   }
 
   render() {
-    const { firstName, lastName, emailAddress, subject, text } = this
+    const {
+      firstName,
+      lastName,
+      emailAddress,
+      subject,
+      text,
+      firstNameError,
+      lastNameError,
+      emailAddressError,
+      subjectError,
+      textError,
+      callInProgress,
+      callMade,
+    } = this
     return (
       <div className="footer-form">
         <h1>GET IN TOUCH</h1>
-        <FooterContactForm
-          onChange={this.onChange}
-          firstName={firstName}
-          lastName={lastName}
-          emailAddress={emailAddress}
-          subject={subject}
-          text={text}
-          onSubmit={this.onSubmit}
-        />
+        <div className="footer-form-container">
+          {(() => {
+            if (callMade) {
+              if (callInProgress) {
+                return (
+                  <Row type="flex" justify="center">
+                    <Col>
+                      <div className="contact-form-message">
+                        <BounceLoader color={'#fff;'} size={100} />
+                      </div>
+                    </Col>
+                  </Row>
+                )
+              } else {
+                return (
+                  <div className="contact-form-message">
+                    <Row type="flex" justify="center">
+                      <Col>
+                        <Icon type="smile-o" />
+                      </Col>
+                    </Row>
+                    <Row type="flex" justify="center">
+                      <Col>Message successfully delivered to Kelsey!</Col>
+                    </Row>
+                  </div>
+                )
+              }
+            } else {
+              return (
+                <FooterContactForm
+                  onChange={this.onChange}
+                  firstName={firstName}
+                  lastName={lastName}
+                  emailAddress={emailAddress}
+                  subject={subject}
+                  text={text}
+                  firstNameError={firstNameError}
+                  lastNameError={lastNameError}
+                  emailAddressError={emailAddressError}
+                  subjectError={subjectError}
+                  textError={textError}
+                  onSubmit={this.onSubmit}
+                />
+              )
+            }
+          })()}
+        </div>
+
         <div className="footer-social">
           <Row gutter={90} type="flex" justify="center">
             <Col xs={24} sm={24} md={9} lg={7} xl={6}>

@@ -205,6 +205,10 @@ pre {
 
 /* Footer */
 
+.footer-form-container {
+  min-height: 374px;
+}
+
 .footer-form h1 {
   text-align: center;
   letter-spacing: 2px;
@@ -221,6 +225,7 @@ pre {
   margin: 5px 0;
   padding: 20px;
 }
+
 
 .footer-form input::placeholder {
   color: #fff;
@@ -257,6 +262,19 @@ pre {
 
 .footer-form button:hover {
   color: #64a5bc;
+}
+
+.footer-form-container .contact-form-message {
+  font-size: 1em;
+  text-transform: capitalize;
+  color: #fff;
+  letter-spacing: 2px;
+  padding-top: 60px;
+}
+.footer-form-container .contact-form-message i {
+  font-size: 5em;
+  margin: 20px 0 30px 0;
+  color: #fff;
 }
 
 .footer-social {
@@ -297,12 +315,10 @@ pre {
   .footer-social {
     text-align: center;
     padding: 50px 0;
-    
   }
   .footer-social span {
     letter-spacing: 2px;
     font-size: 2.5em;
-
   }
   .footer-social i {
     margin-top: 50px;
