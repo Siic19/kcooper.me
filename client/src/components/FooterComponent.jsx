@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Row, Col, Input, Button, Icon } from 'antd'
+import { Row, Col, Icon } from 'antd'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 
+import FooterContactForm from './FooterContactForm'
+
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-
-const { TextArea } = Input
 
 class FooterComponent extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class FooterComponent extends Component {
       emailAddress: '',
       subject: '',
       text: '',
+      callInProgress: false,
     })
   }
 
@@ -30,9 +31,11 @@ class FooterComponent extends Component {
     let response = null
 
     try {
+      this.callInProgress = true
       response = await this.props.mutate({
         variables: { firstName, lastName, emailAddress, subject, text },
       })
+      console.log(response.data)
     } catch (err) {
       console.log(response)
 
@@ -45,60 +48,15 @@ class FooterComponent extends Component {
     return (
       <div className="footer-form">
         <h1>GET IN TOUCH</h1>
-        <Row gutter={10} type="flex" justify="center">
-          <Col xs={23} sm={23} md={20} lg={9} xl={7}>
-            <Input
-              style={{ color: '#fff' }}
-              name="firstName"
-              onChange={this.onChange}
-              value={firstName}
-              placeholder="First name"
-            />
-          </Col>
-          <Col xs={23} sm={23} md={20} lg={9} xl={7}>
-            <Input
-              name="lastName"
-              onChange={this.onChange}
-              value={lastName}
-              placeholder="Last name"
-            />
-          </Col>
-        </Row>
-        <Row gutter={10} type="flex" justify="center">
-          <Col xs={23} sm={23} md={20} lg={9} xl={7}>
-            <Input
-              name="emailAddress"
-              onChange={this.onChange}
-              type="email"
-              value={emailAddress}
-              placeholder="Email address"
-            />
-          </Col>
-          <Col xs={23} sm={23} md={20} lg={9} xl={7}>
-            <Input
-              name="subject"
-              onChange={this.onChange}
-              value={subject}
-              placeholder="Subject"
-            />
-          </Col>
-        </Row>
-        <Row gutter={10} type="flex" justify="center">
-          <Col xs={23} sm={23} md={20} lg={18} xl={14}>
-            <TextArea
-              rows={5}
-              name="text"
-              onChange={this.onChange}
-              value={text}
-              placeholder="Type your message here..."
-            />
-          </Col>
-        </Row>
-        <Row gutter={10} type="flex" justify="center">
-          <Col xs={23} sm={23} md={5} lg={4} xl={3}>
-            <Button onClick={this.onSubmit}>Send</Button>
-          </Col>
-        </Row>
+        <FooterContactForm
+          onChange={this.onChange}
+          firstName={firstName}
+          lastName={lastName}
+          emailAddress={emailAddress}
+          subject={subject}
+          text={text}
+          onSubmit={this.onSubmit}
+        />
         <div className="footer-social">
           <Row gutter={90} type="flex" justify="center">
             <Col xs={24} sm={24} md={9} lg={7} xl={6}>
@@ -140,7 +98,7 @@ const sendEmailMutation = gql`
       emailAddress: $emailAddress
       subject: $subject
       text: $text
-    ) 
+    )
   }
 `
 
