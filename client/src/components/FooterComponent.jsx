@@ -3,6 +3,9 @@ import { Row, Col, Input, Button, Icon } from 'antd'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+
 const { TextArea } = Input
 
 class FooterComponent extends Component {
@@ -123,4 +126,22 @@ class FooterComponent extends Component {
   }
 }
 
-export default observer(FooterComponent)
+const sendEmailMutation = gql`
+  mutation(
+    $firstName: String!
+    $lastName: String!
+    $emailAddress: String!
+    $subject: String!
+    $text: String!
+  ) {
+    sendEmail(
+      firstName: $firstName
+      lastName: $lastName
+      emailAddress: $emailAddress
+      subject: $subject
+      text: $text
+    ) 
+  }
+`
+
+export default graphql(sendEmailMutation)(observer(FooterComponent))

@@ -5,13 +5,20 @@ import nodemailer from 'nodemailer'
 
 import requiresAuth from './permissions'
 
+import dotenv from 'dotenv';
+dotenv.config();
+const SECRET = process.env.GMAIL_SECRET;
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'kjcoop19@gmail.com',
-    pass: 'Payton20',
+    pass: SECRET
   },
 })
+
+console.log(SECRET);
+
 
 export default {
   Query: {
@@ -95,25 +102,27 @@ export default {
     sendEmail: async (parent, args, { models }) => {
       const { firstName, lastName, emailAddress, subject, text } = args
 
-      // setup email data with unicode symbols
+      let response = null
+
       let mailOptions = {
         from: `"${firstName} ${lastName}" - ${emailAddress}`, // sender address
         to: 'kelsey@kcooper.me', // list of receivers
         subject: `${subject}`, // Subject line
         text: `${text}`, // plain text body
-        html: '<b>Hello world?</b>', // html body
+        html: `${text}`, // html body
       }
-
       // send mail with defined transport object
-      await transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return console.log(error)
-        }
-        console.log('Message sent: %s', info.messageId)
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
-        return 1
-      })
+      await transporter
+        .sendMail(mailOptions)
+        .then(function(info) {
+          response = true
+        })
+        .catch(function(err) {
+          console.log(err)
+          response = false
+        })
 
+      return response
     },
   },
 }
