@@ -30,17 +30,11 @@ const MenuMarkup = ({
           KCOOPER.ME
         </Link>
       </Menu.Item>
-      <Menu.Item key="/new-post">
-        <Link to="/new-post">New Post</Link>
-      </Menu.Item>
-      <Menu.Item key="/login">
-        <Link to="/login">Login</Link>
+      <Menu.Item key="/about">
+        <Link to="/about">About Me</Link>
       </Menu.Item>
       <Menu.Item key="/posts">
         <Link to="/posts">Posts</Link>
-      </Menu.Item>
-      <Menu.Item key="/about">
-        <Link to="/about">About Me</Link>
       </Menu.Item>
       <Menu.Item>
         <Link smooth to="#contact">Contact</Link>

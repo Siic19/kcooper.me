@@ -17,8 +17,6 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-console.log(SECRET);
-
 
 export default {
   Query: {
@@ -35,11 +33,19 @@ export default {
     },
     allPosts: (parent, args, { models }) => {
       // if args are given with the query (last: 10) it will return the last 10 posts
-      if (!args) {
+      const { last, offset } = args
+      
+      if (!last && !offset) {
         return models.Post.findAll()
+      } else if (last && !offset) {
+        return models.Post.findAll({
+          limit: last,
+          order: [['createdAt', 'DESC']],
+        })
       } else {
         return models.Post.findAll({
-          limit: args.last,
+          limit: last,
+          offset,
           order: [['createdAt', 'DESC']],
         })
       }

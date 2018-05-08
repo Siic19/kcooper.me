@@ -20,7 +20,7 @@ export default `
   type Query {
     allUsers: [User!]!
     loggedInUser: User
-    allPosts(last: Int): [Post!]!
+    allPosts(last: Int, offset: Int): [Post!]!
     findPost(slug: String!): Post!
   }
 
