@@ -61,7 +61,9 @@ class Blog extends Component {
               {({ loading, error, data }) => {
                 if (loading) return 'Loading...'
                 if (error) return `Error! ${error.message}`
-
+                if (data.allPosts.length === 0) {
+                  this.offset -= 5
+                }
                 return (
                   <div>
                     {data.allPosts.map((post) => (

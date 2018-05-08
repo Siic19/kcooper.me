@@ -5,6 +5,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import { apolloUploadExpress } from 'apollo-upload-server'
 
 
 import typeDefs from './schema';
@@ -47,6 +48,7 @@ app.use(
 app.use(
   '/graphql',
   bodyParser.json(),
+  apolloUploadExpress({ uploadDir: "./images"}),
   graphqlExpress(req => ({
     schema,
     context: {

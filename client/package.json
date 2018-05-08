@@ -8,6 +8,7 @@
     "apollo-client-preset": "^1.0.8",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.3",
+    "apollo-upload-client": "^8.0.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.1",
     "highlight.js": "^9.12.0",

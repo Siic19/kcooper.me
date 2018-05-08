@@ -14,6 +14,7 @@ module.exports = function override(config, env) {
       '@layout-footer-background': '#64A5BC',
       '@layout-footer-padding': '1px 0px;',
       '@form-item-margin-bottom': '0px;',
+      '@warning-color': '#C3256B;',
     },
   })(config, env)
   return config

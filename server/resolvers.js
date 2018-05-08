@@ -130,5 +130,10 @@ export default {
 
       return response
     },
+    uploadFile: (parent, { file }) => {
+      console.log(file);
+      return true;
+      
+    }
   },
 }

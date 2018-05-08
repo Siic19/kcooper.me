@@ -7,15 +7,21 @@ import App from './components/App'
 
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
+import { createUploadLink } from 'apollo-upload-client'
+
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
 import '../node_modules/react-grid-layout/css/styles.css'
 import '../node_modules/react-resizable/css/styles.css'
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: 'http://localhost:3001/graphql',
 })
+
+// const httpLink = createHttpLink({
+//   uri: 'http://localhost:3001/graphql',
+// })
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('token')
