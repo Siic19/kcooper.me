@@ -9,7 +9,7 @@ import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
 
-import { Input, Button, Select, Upload, message, Icon } from 'antd'
+import { Input, Button, Select } from 'antd'
 const { TextArea } = Input
 
 const highlight = (str, lang) => {
@@ -39,8 +39,7 @@ class NewPost extends React.Component {
       slug: '',
       category: '',
       markdown: '',
-      fileList: [],
-      uploading: false,
+      image: '',
     })
   }
 
@@ -50,12 +49,12 @@ class NewPost extends React.Component {
   }
 
   onSubmit = async () => {
-    const { title, slug, category, markdown } = this
+    const { title, slug, category, markdown, image } = this
     let response = null
 
     try {
       response = await this.props.mutate({
-        variables: { title, slug, category, markdown },
+        variables: { title, slug, category, markdown, image },
       })
     } catch (err) {
       console.log(response)
@@ -70,22 +69,8 @@ class NewPost extends React.Component {
   }
 
   render() {
-    const { title, slug, markdown } = this
-
+    const { title, slug, markdown, image } = this
     const Option = Select.Option
-
-    const props = {
-      action: '//jsonplaceholder.typicode.com/posts/',
-      onRemove: (file) => {
-        this.fileList = []
-      },
-      beforeUpload: (file) => {
-        this.fileList = [file]
-
-        return false
-      },
-      fileList: this.fileList,
-    }
     return (
       <div className="container">
         <Helmet>
@@ -124,11 +109,12 @@ class NewPost extends React.Component {
           </Select>
         </div>
         <div className="input">
-          <Upload {...props}>
-            <Button>
-              <Icon type="upload" /> Click to Upload
-            </Button>
-          </Upload>
+          <Input
+            name="image"
+            onChange={this.onChange}
+            value={image}
+            placeholder="Image link here..."
+          />
         </div>
         <div className="input">
           <TextArea
@@ -156,12 +142,14 @@ const newPostMutation = gql`
     $slug: String!
     $category: String!
     $markdown: String!
+    $image: String!
   ) {
     createPost(
       title: $title
       slug: $slug
       category: $category
       markdown: $markdown
+      image: $image
     ) {
       id
       title

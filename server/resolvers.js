@@ -9,6 +9,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 const SECRET = process.env.GMAIL_SECRET;
 
+import { GraphQLUpload } from 'apollo-upload-server'
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -17,6 +19,11 @@ const transporter = nodemailer.createTransport({
   },
 })
 
+const processUpload = async upload => {
+  const { stream, filename, mimetype, encoding } = await upload
+  const { id, path } = await storeFS({ stream, filename })
+  return storeDB({ id, filename, mimetype, encoding, path })
+}
 
 export default {
   Query: {
@@ -94,18 +101,11 @@ export default {
     },
     createPost: requiresAuth.createResolver(
       async (parent, args, { models, user }) => {
-        console.log('~~~~~~~~~~~~~~~~~~~~')
-
-        console.log(args.markdown)
-
-        console.log('~~~~~~~~~~~~~~~~~~~~')
-
-        // const { title, slug, category, markdown} = args
-
         return await models.Post.create(args)
       },
     ),
     sendEmail: async (parent, args, { models }) => {
+      
       const { firstName, lastName, emailAddress, subject, text } = args
 
       let response = null
@@ -130,10 +130,5 @@ export default {
 
       return response
     },
-    uploadFile: (parent, { file }) => {
-      console.log(file);
-      return true;
-      
-    }
   },
 }

@@ -4,6 +4,7 @@ export default (sequelize, DataTypes) => {
       slug: DataTypes.STRING,
       category: DataTypes.STRING,
       markdown: DataTypes.TEXT,
+      image: DataTypes.STRING,
     });
   
     return Post;
