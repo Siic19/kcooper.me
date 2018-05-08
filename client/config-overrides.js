@@ -13,6 +13,7 @@ module.exports = function override(config, env) {
       '@layout-header-background': '#FFF',
       '@layout-footer-background': '#64A5BC',
       '@layout-footer-padding': '1px 0px;',
+      '@form-item-margin-bottom': '24px;',
     },
   })(config, env)
   return config

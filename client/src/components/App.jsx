@@ -113,8 +113,9 @@ const App = (props) => {
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/new-post" component={NewPost} />
             <Footer>
-              <FooterComponent />
-              </Footer>
+              <FooterComponent/>
+              <div id="contact" title="contact"></div>
+            </Footer>
           </div>
         )}
       />
