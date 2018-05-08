@@ -23,9 +23,9 @@ const highlight = (str, lang) => {
   return ''
 }
 
-const PostsReturn = (props) => {
+const BlogReturn = (props) => {
   const { title, category, markdown } = props
   return <div className="posts-right-container"> {(title, category, markdown)}</div>
 }
 
-export default PostsReturn
+export default BlogReturn

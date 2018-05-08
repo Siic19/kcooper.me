@@ -9,7 +9,7 @@ import Login from './Login'
 import Home from './Home'
 import NewPost from './NewPost'
 import Post from './Post'
-import Posts from './Posts'
+import Blog from './Blog'
 import About from './About'
 import FooterComponent from './FooterComponent'
 import decode from 'jwt-decode'
@@ -108,7 +108,7 @@ const App = (props) => {
               <Route exact path="/posts/:slug" component={Post} />
             </AnimatedSwitch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/posts" component={Posts} />
+            <Route exact path="/blog" component={Blog} />
             <Route exact path="/about-me" component={About} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/new-post" component={NewPost} />

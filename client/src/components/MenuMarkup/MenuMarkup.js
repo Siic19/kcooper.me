@@ -33,10 +33,10 @@ const MenuMarkup = ({
       <Menu.Item key="/about">
         <Link to="/about">About Me</Link>
       </Menu.Item>
-      <Menu.Item key="/posts">
-        <Link to="/posts">Posts</Link>
+      <Menu.Item key="/blog">
+        <Link to="/blog">Blog</Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="contact">
         <Link smooth to="#contact">Contact</Link>
       </Menu.Item>
     </Menu>

@@ -5,13 +5,13 @@ import { observer } from 'mobx-react'
 
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import PostsReturn from './PostsReturn'
+import BlogReturn from './BlogReturn'
 
-import { Button, Row, Col, Icon } from 'antd'
+import { Row, Col, Icon } from 'antd'
 
 import { Helmet } from 'react-helmet'
 
-class Posts extends Component {
+class Blog extends Component {
   constructor(props) {
     super(props)
     extendObservable(this, {
@@ -32,6 +32,9 @@ class Posts extends Component {
     const { offset } = this
     return (
       <div className="post-container">
+        <Helmet>
+          <title>KCooper.me | Blog</title>
+        </Helmet>
         <Row gutter={10}>
           <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
             <div className="posts-left-container">
@@ -62,7 +65,8 @@ class Posts extends Component {
                 return (
                   <div>
                     {data.allPosts.map((post) => (
-                      <PostsReturn
+                      <BlogReturn
+                        key={post.id}
                         title={post.title}
                         category={post.category}
                         markdown={post.markdown}
@@ -90,4 +94,4 @@ const allPostsQuery = gql`
   }
 `
 
-export default observer(Posts)
+export default observer(Blog)
