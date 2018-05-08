@@ -9,7 +9,7 @@ import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
 
-import { Input, Button, Select } from 'antd'
+import { Input, Button, Select, Upload, message, Icon } from 'antd'
 const { TextArea } = Input
 
 const highlight = (str, lang) => {
@@ -39,6 +39,8 @@ class NewPost extends React.Component {
       slug: '',
       category: '',
       markdown: '',
+      fileList: [],
+      uploading: false,
     })
   }
 
@@ -69,7 +71,21 @@ class NewPost extends React.Component {
 
   render() {
     const { title, slug, markdown } = this
+
     const Option = Select.Option
+
+    const props = {
+      action: '//jsonplaceholder.typicode.com/posts/',
+      onRemove: (file) => {
+        this.fileList = []
+      },
+      beforeUpload: (file) => {
+        this.fileList = [file]
+
+        return false
+      },
+      fileList: this.fileList,
+    }
     return (
       <div className="container">
         <Helmet>
@@ -108,6 +124,13 @@ class NewPost extends React.Component {
           </Select>
         </div>
         <div className="input">
+          <Upload {...props}>
+            <Button>
+              <Icon type="upload" /> Click to Upload
+            </Button>
+          </Upload>
+        </div>
+        <div className="input">
           <TextArea
             rows={40}
             name="markdown"
@@ -118,8 +141,8 @@ class NewPost extends React.Component {
         </div>
         <Button onClick={this.onSubmit}>Submit</Button>
         <div className="markdown-preview">
-        Post Preview:
-        <hr />
+          Post Preview:
+          <hr />
           <Markdown options={{ highlight }} source={markdown} />
         </div>
       </div>
