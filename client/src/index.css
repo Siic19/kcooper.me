@@ -171,6 +171,35 @@ pre {
   justify-content: center;
 }
 
+/* Posts Page */
+
+.posts-left-container {
+  background-color: #fff;
+  height: 250px;
+  padding: 20px;
+}
+
+.posts-left-container h1 {
+  text-transform: capitalize;
+  color: lightgray;
+  text-align: left;
+}
+
+.posts-left-container i {
+  color: #f93887;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3em;
+  cursor: pointer;
+}
+
+.posts-right-container {
+  background-color: #fff;
+}
+
+.posts-right-container:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 .input {
   margin-bottom: 16px;
 }
@@ -203,26 +232,23 @@ pre {
   margin: 20px 0;
 }
 
-
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus
-input:-webkit-autofill, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
 textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: 1px solid lightgray;
   -webkit-text-fill-color: black;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Footer */
-
 
 .footer-form-container {
   min-height: 374px;
@@ -244,7 +270,6 @@ select:-webkit-autofill:focus {
   margin: 5px 0;
   padding: 20px;
 }
-
 
 .footer-form input::placeholder {
   color: #fff;

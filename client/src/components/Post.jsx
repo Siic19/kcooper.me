@@ -11,7 +11,6 @@ class Post extends Component {
 
     return (
       <div className="post-container">
-      {/* <div> */}
         <Query query={allPostsQuery} variables={{ slug: slug }}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
@@ -24,42 +23,12 @@ class Post extends Component {
                 <Helmet>
                   <title>KCooper.me | {title}</title>
                 </Helmet>
-                {(() => {
-                  switch (category) {
-                    case 'other':
-                      return (
-                        <PostReturn
-                          title={title}
-                          category={category}
-                          markdown={markdown}
-                        />
-                      )
-                    case 'design':
-                      return (
-                        <PostReturn
-                          title={title}
-                          category={category}
-                          markdown={markdown}
-                        />
-                      )
-                    case 'programming':
-                      return (
-                        <PostReturn
-                          title={title}
-                          category={category}
-                          markdown={markdown}
-                        />
-                      )
-                    default:
-                      return (
-                        <PostReturn
-                          title={title}
-                          category={category}
-                          markdown={markdown}
-                        />
-                      )
-                  }
-                })()}
+
+                <PostReturn
+                  title={title}
+                  category={category}
+                  markdown={markdown}
+                />
               </div>
             )
           }}
