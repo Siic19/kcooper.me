@@ -5,8 +5,6 @@ import { Row, Col, Input, Button, Form } from 'antd'
 const { TextArea } = Input
 const FormItem = Form.Item
 
-const test = false
-
 const FooterContactForm = (props) => {
   const {
     onChange,
@@ -36,7 +34,6 @@ const FooterContactForm = (props) => {
               onChange={onChange}
               value={firstName}
               placeholder="First name"
-              id="warning"
             />
           </FormItem>
         </Col>
@@ -50,7 +47,6 @@ const FooterContactForm = (props) => {
               onChange={onChange}
               value={lastName}
               placeholder="Last name"
-              id="warning"
             />
           </FormItem>
         </Col>
@@ -67,7 +63,6 @@ const FooterContactForm = (props) => {
               type="email"
               value={emailAddress}
               placeholder="Email address"
-              id="warning"
             />
           </FormItem>
         </Col>
@@ -81,7 +76,6 @@ const FooterContactForm = (props) => {
               onChange={onChange}
               value={subject}
               placeholder="Subject"
-              id="warning"
             />
           </FormItem>
         </Col>
@@ -95,7 +89,6 @@ const FooterContactForm = (props) => {
               onChange={onChange}
               value={text}
               placeholder="Type your message here..."
-              id="warning"
             />
           </FormItem>
         </Col>

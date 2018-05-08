@@ -35,8 +35,6 @@ class FooterComponent extends Component {
   }
 
   onSubmit = async (e) => {
-    console.log(e)
-
     const { firstName, lastName, emailAddress, subject, text } = this
 
     this.firstNameError = false
@@ -81,8 +79,8 @@ class FooterComponent extends Component {
         response = await this.props.mutate({
           variables: { firstName, lastName, emailAddress, subject, text },
         })
-
         this.callInProgress = false
+        console.log(response)
       } catch (err) {
         console.log(err)
 

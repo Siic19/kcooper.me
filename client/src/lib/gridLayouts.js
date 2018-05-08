@@ -42,8 +42,8 @@ export const lg = [
     { i: '5', x: 0, y: 13, w: 4, h: 3, static: true },
     { i: '6', x: 0, y: 16, w: 4, h: 3, static: true },
     { i: '7', x: 0, y: 19, w: 4, h: 3, static: true },
-    { i: '8', x: 0, y: 0, w: 0, h: 0 },
-    { i: '9', x: 0, y: 0, w: 0, h: 0 },
+    { i: '8', x: 0, y: 0, w: 0, h: 0, minW: 0, maxW: 0, minH: 0, maxH: 0 },
+    { i: '9', x: 0, y: 0, w: 0, h: 0, minW: 0, maxW: 0, minH: 0, maxH: 0 },
   ]
 
   export const xxs = [
@@ -52,8 +52,8 @@ export const lg = [
     { i: '3', x: 0, y: 5, w: 4, h: 2, static: true },
     { i: '4', x: 0, y: 7, w: 4, h: 2, static: true },
     { i: '5', x: 0, y: 9, w: 4, h: 2, static: true },
-    { i: '6', x: 0, y: 0, w: 0, h: 0 },
-    { i: '7', x: 0, y: 0, w: 0, h: 0 },
-    { i: '8', x: 0, y: 0, w: 0, h: 0 },
-    { i: '9', x: 0, y: 0, w: 0, h: 0 },
+    { i: '6', x: 0, y: 0, w: 0, h: 0, minW: 0, maxW: 0, minH: 0, maxH: 0 },
+    { i: '7', x: 0, y: 0, w: 0, h: 0, minW: 0, maxW: 0, minH: 0, maxH: 0 },
+    { i: '8', x: 0, y: 0, w: 0, h: 0, minW: 0, maxW: 0, minH: 0, maxH: 0 },
+    { i: '9', x: 0, y: 0, w: 0, h: 0, minW: 0, maxW: 0, minH: 0, maxH: 0 },
   ]
