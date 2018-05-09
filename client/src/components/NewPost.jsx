@@ -46,6 +46,8 @@ class NewPost extends React.Component {
       categoryError: false,
       markdownError: false,
       imageError: false,
+      isLoading: false,
+      successfullyPosted: false,
     })
   }
 
@@ -55,13 +57,7 @@ class NewPost extends React.Component {
   }
 
   onSubmit = async () => {
-    const {
-      title,
-      slug,
-      category,
-      markdown,
-      image
-    } = this
+    const { title, slug, category, markdown, image } = this
 
     this.titleError = false
     this.slugError = false
@@ -97,16 +93,17 @@ class NewPost extends React.Component {
     }
 
     if (!error) {
-      console.log(error);
-      
-      // try {
-      //   const response = await this.props.mutate({
-      //     variables: { title, slug, category, markdown, image },
-      //   })
-      // } catch (err) {
-      //   this.props.history.push('/login')
-      //   return
-      // }
+      try {
+        this.isLoading = true;
+        const response = await this.props.mutate({
+          variables: { title, slug, category, markdown, image },
+        })
+        this.successfullyPosted = true;
+        this.isLoading = false;
+      } catch (err) {
+        this.isLoading = false;
+        return
+      }
     }
   }
 
@@ -125,6 +122,7 @@ class NewPost extends React.Component {
       categoryError,
       markdownError,
       imageError,
+      isLoading,
     } = this
     const Option = Select.Option
     return (
@@ -220,7 +218,8 @@ class NewPost extends React.Component {
                   />
                 </FormItem>
               </div>
-              <Button onClick={this.onSubmit}>Submit</Button>
+              <Button loading={isLoading} onClick={this.onSubmit}>Submit</Button>
+              {this.successfullyPosted ? <span>Posted!</span> : null}
             </div>
             <div className="post-preview">
               <div className="post-preview-title">post preview</div>
