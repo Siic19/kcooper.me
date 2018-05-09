@@ -35,8 +35,26 @@ h6 {
 
 /* Login / New Post */
 
+.login-or-post-container {
+  background-color: #fff;
+  padding: 25px;
+}
+
 .input {
   margin-bottom: 16px;
+}
+
+.post-preview {
+  margin-top: 10px;
+}
+
+.post-preview-title {
+  text-transform: uppercase;
+  font-size: 4em;
+  color: #fff;
+  background-color: #f93887;
+  padding: 0 20px;
+  margin-bottom: 10px;
 }
 
 /* .ui.segment:first-child {
@@ -146,6 +164,7 @@ h6 {
 .post-title {
   background-color: #fff;
   padding: 35px 30px 35px 40px;
+  margin-bottom: 10px;
   display: block;
   height: auto;
 }
@@ -172,7 +191,6 @@ h6 {
   padding: 30px 40px;
   font-size: 1.2em;
   line-height: 2;
-  min-height: 1900px;
 }
 
 .post-content h1 {
@@ -326,6 +344,15 @@ pre {
 
 .blog-date {
   color: #7a7a7a;
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.blog-date span{
+  background-color: #f93887;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 1px 5px;
   font-size: 1.2em;
 }
 

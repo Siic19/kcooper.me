@@ -156,7 +156,7 @@ class FooterComponent extends Component {
         </div>
 
         <div className="footer-social">
-          <Row gutter={90} type="flex" justify="center">
+          <Row type="flex" justify="center">
             <Col xs={24} sm={24} md={9} lg={7} xl={6}>
               <span>FOLLOW ME</span>
             </Col>

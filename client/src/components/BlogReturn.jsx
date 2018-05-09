@@ -2,34 +2,11 @@ import React from 'react'
 import { Row, Col, Button } from 'antd'
 import { Link } from 'react-router-dom'
 
-import Markdown from 'react-remarkable'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/dracula.css'
-
-const highlight = (str, lang) => {
-  if (lang && hljs.getLanguage(lang)) {
-    try {
-      return hljs.highlight(lang, str).value
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  try {
-    return hljs.highlightAuto(str).value
-  } catch (err) {
-    console.error(err)
-  }
-
-  return ''
-}
-
 function dateConfig(date) {
   const dateSplit = date.split(' ', 4)
   dateSplit.shift()
   dateSplit[1] = dateSplit[1] += ','
-  const finalDate = dateSplit.join(' ')
-  return finalDate
+  return dateSplit.join(' ')
 }
 
 function getBlurb(markdown) {
@@ -55,7 +32,7 @@ const BlogReturn = (props) => {
             <div className="blog-title">
               <h1>{title}</h1>
             </div>
-            <div className="blog-date">{dateConfig(createdAt)}</div>
+            <div className="blog-date"><span>{category}</span> {dateConfig(createdAt)}</div>
             <div className="blog-blurb">{getBlurb(markdown)}...</div>
             <div className="blog-link">
               <Link to={{ pathname: `/posts/${slug}` }}>

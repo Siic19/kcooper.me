@@ -9,7 +9,7 @@ import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
 
-import { Input, Button, Select } from 'antd'
+import { Input, Button, Select, Col, Row } from 'antd'
 const { TextArea } = Input
 
 const highlight = (str, lang) => {
@@ -72,65 +72,102 @@ class NewPost extends React.Component {
     const { title, slug, markdown, image } = this
     const Option = Select.Option
     return (
-      <div className="container">
+      <div className="post-container">
         <Helmet>
           <title>KCooper.me | New Post</title>
         </Helmet>
-        <div className="page-header">
-          <h1>New Post</h1>
-        </div>
-        <div className="input">
-          <Input
-            name="title"
-            onChange={this.onChange}
-            value={title}
-            placeholder="Title..."
-          />
-        </div>
-        <div className="input">
-          <Input
-            name="slug"
-            onChange={this.onChange}
-            value={slug}
-            placeholder="Slug.."
-          />
-        </div>
-        <div className="input">
-          <Select
-            showSearch
-            style={{ width: 200 }}
-            placeholder="Select category"
-            optionFilterProp="children"
-            onChange={this.handleSelectChange}
+        <Row gutter={10}>
+          <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
+            <Row type="flex" justify="center" align="top">
+              <Col span={24}>
+                <div className="vertical-text">newpost</div>
+              </Col>
+            </Row>
+          </Col>
+          <Col
+            className="blog-col-right"
+            xs={24}
+            sm={24}
+            md={17}
+            lg={18}
+            xl={19}
           >
-            <Option value="programming">Programming</Option>
-            <Option value="design">Design</Option>
-            <Option value="other">Other</Option>
-          </Select>
-        </div>
-        <div className="input">
-          <Input
-            name="image"
-            onChange={this.onChange}
-            value={image}
-            placeholder="Image link here..."
-          />
-        </div>
-        <div className="input">
-          <TextArea
-            rows={40}
-            name="markdown"
-            onChange={this.onChange}
-            value={markdown}
-            placeholder="Write in markdown!"
-          />
-        </div>
-        <Button onClick={this.onSubmit}>Submit</Button>
-        <div className="markdown-preview">
-          Post Preview:
-          <hr />
-          <Markdown options={{ highlight }} source={markdown} />
-        </div>
+            <div className="login-or-post-container">
+              <div className="input">
+                <Input
+                  name="title"
+                  onChange={this.onChange}
+                  value={title}
+                  placeholder="Title..."
+                />
+              </div>
+              <div className="input">
+                <Input
+                  name="slug"
+                  onChange={this.onChange}
+                  value={slug}
+                  placeholder="Slug.."
+                />
+              </div>
+              <div className="input">
+                <Select
+                  showSearch
+                  style={{ width: 200 }}
+                  placeholder="Select category"
+                  optionFilterProp="children"
+                  onChange={this.handleSelectChange}
+                >
+                  <Option value="programming">Programming</Option>
+                  <Option value="design">Design</Option>
+                  <Option value="other">Other</Option>
+                </Select>
+              </div>
+              <div className="input">
+                <Input
+                  name="image"
+                  onChange={this.onChange}
+                  value={image}
+                  placeholder="Image link here..."
+                />
+              </div>
+              <div className="input">
+                <TextArea
+                  rows={33}
+                  name="markdown"
+                  onChange={this.onChange}
+                  value={markdown}
+                  placeholder="Write in markdown!"
+                />
+              </div>
+              <Button onClick={this.onSubmit}>Submit</Button>
+            </div>
+          </Col>
+        </Row>
+        <Row type="flex" justify="end" gutter={10}>
+          <Col xs={24} sm={24} md={17} lg={18} xl={19}>
+            <div className="post-preview">
+              <div className="post-preview-title">post preview</div>
+              <div className="post-title">
+                {this.title ? <h1>{this.title}</h1> : <div>Post Title</div>}
+
+                <div className="blog-date">
+                  {this.category ? (
+                    <span>{this.category}</span>
+                  ) : (
+                    <div>Post Category</div>
+                  )}
+                </div>
+              </div>
+              <div className="post-content">
+                {!this.markdown ? (
+                  <div>Post content</div>
+                ) : (
+                  <Markdown options={{ highlight }} source={this.markdown} />
+                )}
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
     )
   }
