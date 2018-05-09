@@ -29,8 +29,7 @@ class Home extends Component {
     const dateSplit = date.split(' ', 4)
     dateSplit.shift()
     dateSplit[1] = dateSplit[1] += ','
-    const finalDate = dateSplit.join(' ')
-    return finalDate
+    return dateSplit.join(' ')
   }
 
   render() {

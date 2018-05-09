@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
-import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import BlogReturn from './BlogReturn'
