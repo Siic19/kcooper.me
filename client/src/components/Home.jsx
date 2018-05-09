@@ -79,30 +79,36 @@ class Home extends Component {
                             boxOpacity: 0,
                             boxX: -25,
                             scale: 110,
-                            tint: 0
+                            tint: 0,
+                            categoryY: -10,
+                            dateY: -25,
                           }}
                           style={{
                             opacity: spring(hoveredID === index + 2 ? 1 : 0),
                             boxOpacity: spring(hoveredID === index + 2 ? 1 : 0),
                             boxX: spring(hoveredID === index + 2 ? 0 : -25),
                             scale: spring(hoveredID === index + 2 ? 100 : 110),
-                            tint: spring(hoveredID === index + 2 ? .75 : 0),
+                            tint: spring(hoveredID === index + 2 ? 0.75 : 0),
+                            categoryY: spring(
+                              hoveredID === index + 2 ? -10 : 0,
+                              {stiffness: 120, damping: 40}
+                            ),
+                            dateY: spring(hoveredID === index + 2 ? -15 : 0, {stiffness: 100, damping: 40}),
                           }}
                         >
                           {(style) => (
-                            <div
-                              className="cell"
-                              
-                            >
-                              <div className="cell-container"style={{
-                                backgroundImage: `url(${post.image})`,
-                                backgroundSize: `${style.scale}%`,
-                              }}>
-                              
-                                {console.log(style)}
-                                <div className="cell-tint" style={{opacity: style.tint}}>
-                                tint
-                                </div>
+                            <div className="cell">
+                              <div
+                                className="cell-container"
+                                style={{
+                                  backgroundImage: `url(${post.image})`,
+                                  backgroundSize: `${style.scale}%`,
+                                }}
+                              >
+                                <div
+                                  className="cell-tint"
+                                  style={{ opacity: style.tint }}
+                                />
                                 <div
                                   className="cell-box"
                                   style={{
@@ -114,17 +120,16 @@ class Home extends Component {
                                 <div className="cell-title">{post.title}</div>
                                 <div
                                   className="cell-category"
-                                  style={{ opacity: style.opacity }}
+                                  style={{ opacity: style.opacity, transform: `translateY(${style.categoryY}px)` }}
                                 >
                                   {post.category}
                                 </div>
                                 <div
                                   className="cell-date"
-                                  style={{ opacity: style.opacity }}
+                                  style={{ opacity: style.opacity,  transform: `translateY(${style.dateY}px)` }}
                                 >
                                   {this.dateConfig(post.createdAt)}
                                 </div>
-                                
                               </div>
                             </div>
                           )}
