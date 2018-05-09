@@ -171,34 +171,84 @@ pre {
   justify-content: center;
 }
 
-/* Posts Page */
+/* Posts (Blog) Page */
 
-.posts-left-container {
+.blog-left-container {
   background-color: #fff;
   height: 250px;
   padding: 20px;
 }
 
-.posts-left-container h1 {
+.blog-left-container h1 {
   text-transform: capitalize;
   color: lightgray;
   text-align: left;
 }
 
-.posts-left-container i {
-  color: #f93887;
+.blog-right-container {
+  background-color: #fff;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.blog-right-container-container {
+  padding: 30px;
+}
+
+.blog-image-container {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border-right: 10px solid #e8e8e8;
+}
+
+.blog-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+}
+
+.blog-title h1{
+  color: #64a5bc;
+  font-size: 4em;
+  margin: 0;
+}
+
+.blog-date {
+  color: #7a7a7a;
+  font-size: 1.2em;
+}
+
+.blog-link {
+  margin-top: 20px;
+}
+
+.blog-pagination {
+  background-color: #f93887;
+  padding: 15px;
+  border-right: 10px solid #e8e8e8;
+  color: #fff;
+  line-height: 1.8;
+}
+
+.blog-pagination i {
+  color: #fff;
   font-family: 'Oswald', sans-serif;
-  font-size: 3em;
+  font-size: 2em;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.blog-pagination i:hover {
+  color: #64a5bc;
   cursor: pointer;
 }
 
-.posts-right-container {
-  background-color: #fff;
-}
 
-.posts-right-container:not(:last-child) {
-  margin-bottom: 10px;
-}
 
 .input {
   margin-bottom: 16px;
@@ -231,37 +281,40 @@ pre {
 
 .cell-title {
   position: absolute;
-  margin-left: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80%;
   top: 50%;
   transform: translateY(-50%);
   color: #fff;
   font-size: 2.3em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .cell-category {
   position: absolute;
   margin-left: 20px;
-  top: 65%;
-  transform: translateY(-65%);
+  top: 70%;
+  transform: translateY(-70%);
   color: #fff;
   border: 1px solid #fff;
   line-height: 1;
   padding: 5px 20px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-transform: uppercase;
 }
 
 .cell-date {
   position: absolute;
   margin-left: 20px;
-  top: 80%;
-  transform: translateY(-80%);
+  top: 82%;
+  transform: translateY(-82%);
   color: #fff;
   border: 1px solid #fff;
   line-height: 1;
   padding: 5px 20px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-transform: uppercase;
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
-
+import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import BlogReturn from './BlogReturn'
@@ -37,20 +37,14 @@ class Blog extends Component {
         </Helmet>
         <Row gutter={10}>
           <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
-            <div className="posts-left-container">
-              <h1>
-                a blog is a place to keep my thoughts, or at least the ones I
-                care to share...
-              </h1>
-              <Row type="flex" justify="space-between" align="top">
-                <Icon onClick={this.onClickDown} type="arrow-left" />
-                <div>pg.{offset / 5}</div>
-                <Icon onClick={this.onClickUp} type="arrow-right" />
-              </Row>
-            </div>
+            <Row type="flex" justify="center" align="top">
+              <Col span={24}>
+                <div className="vertical-text">weblog</div>
+              </Col>
+            </Row>
           </Col>
           <Col
-            className="post-col-right"
+            className="blog-col-right"
             xs={24}
             sm={24}
             md={17}
@@ -67,17 +61,30 @@ class Blog extends Component {
                 return (
                   <div>
                     {data.allPosts.map((post) => (
+                      // <Link to={{ pathname: `/posts/${post.slug}` }}>
                       <BlogReturn
                         key={post.id}
                         title={post.title}
                         category={post.category}
                         markdown={post.markdown}
+                        image={post.image}
+                        createdAt={post.createdAt}
+                        slug={post.slug}
                       />
                     ))}
                   </div>
                 )
               }}
             </Query>
+            <Col xs={6} sm={6} md={8} lg={8}>
+              <div className="blog-pagination">
+                <Row type="flex" justify="space-between" align="top">
+                  <Icon onClick={this.onClickDown} type="arrow-left" />
+                  page {(offset / 5) + 1}
+                  <Icon onClick={this.onClickUp} type="arrow-right" />
+                </Row>
+              </div>
+            </Col>
           </Col>
         </Row>
       </div>
@@ -92,6 +99,9 @@ const allPostsQuery = gql`
       title
       category
       markdown
+      slug
+      image
+      createdAt
     }
   }
 `
