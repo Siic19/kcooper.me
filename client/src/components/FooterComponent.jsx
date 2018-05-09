@@ -45,8 +45,6 @@ class FooterComponent extends Component {
 
     let error = false
 
-    let response = null
-
     if (!firstName) {
       this.firstNameError = true
       error = true
@@ -76,7 +74,7 @@ class FooterComponent extends Component {
       this.callInProgress = true
       this.callMade = true
       try {
-        response = await this.props.mutate({
+        const response = await this.props.mutate({
           variables: { firstName, lastName, emailAddress, subject, text },
         })
         this.callInProgress = false

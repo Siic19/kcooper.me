@@ -9,8 +9,9 @@ import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
 
-import { Input, Button, Select, Col, Row } from 'antd'
+import { Input, Button, Select, Col, Row, Form } from 'antd'
 const { TextArea } = Input
+const FormItem = Form.Item
 
 const highlight = (str, lang) => {
   if (lang && hljs.getLanguage(lang)) {
@@ -40,6 +41,11 @@ class NewPost extends React.Component {
       category: '',
       markdown: '',
       image: '',
+      titleError: false,
+      slugError: false,
+      categoryError: false,
+      markdownError: false,
+      imageError: false,
     })
   }
 
@@ -49,18 +55,58 @@ class NewPost extends React.Component {
   }
 
   onSubmit = async () => {
-    const { title, slug, category, markdown, image } = this
-    let response = null
+    const {
+      title,
+      slug,
+      category,
+      markdown,
+      image
+    } = this
 
-    try {
-      response = await this.props.mutate({
-        variables: { title, slug, category, markdown, image },
-      })
-    } catch (err) {
-      console.log(response)
+    this.titleError = false
+    this.slugError = false
+    this.categoryError = false
+    this.markdownError = false
+    this.imageError = false
 
-      this.props.history.push('/login')
-      return
+    let error = false
+
+    if (!title) {
+      this.titleError = true
+      error = true
+    }
+
+    if (!slug) {
+      this.slugError = true
+      error = true
+    }
+
+    if (!category) {
+      this.categoryError = true
+      error = true
+    }
+
+    if (!markdown) {
+      this.markdownError = true
+      error = true
+    }
+
+    if (!image) {
+      this.imageError = true
+      error = true
+    }
+
+    if (!error) {
+      console.log(error);
+      
+      // try {
+      //   const response = await this.props.mutate({
+      //     variables: { title, slug, category, markdown, image },
+      //   })
+      // } catch (err) {
+      //   this.props.history.push('/login')
+      //   return
+      // }
     }
   }
 
@@ -69,7 +115,17 @@ class NewPost extends React.Component {
   }
 
   render() {
-    const { title, slug, markdown, image } = this
+    const {
+      title,
+      slug,
+      markdown,
+      image,
+      titleError,
+      slugError,
+      categoryError,
+      markdownError,
+      imageError,
+    } = this
     const Option = Select.Option
     return (
       <div className="post-container">
@@ -94,57 +150,78 @@ class NewPost extends React.Component {
           >
             <div className="login-or-post-container">
               <div className="input">
-                <Input
-                  name="title"
-                  onChange={this.onChange}
-                  value={title}
-                  placeholder="Title..."
-                />
-              </div>
-              <div className="input">
-                <Input
-                  name="slug"
-                  onChange={this.onChange}
-                  value={slug}
-                  placeholder="Slug.."
-                />
-              </div>
-              <div className="input">
-                <Select
-                  showSearch
-                  style={{ width: 200 }}
-                  placeholder="Select category"
-                  optionFilterProp="children"
-                  onChange={this.handleSelectChange}
+                <FormItem
+                  hasFeedback
+                  validateStatus={titleError ? 'warning' : null}
                 >
-                  <Option value="programming">Programming</Option>
-                  <Option value="design">Design</Option>
-                  <Option value="other">Other</Option>
-                </Select>
+                  <Input
+                    name="title"
+                    onChange={this.onChange}
+                    value={title}
+                    placeholder="Title..."
+                  />
+                </FormItem>
               </div>
               <div className="input">
-                <Input
-                  name="image"
-                  onChange={this.onChange}
-                  value={image}
-                  placeholder="Image link here..."
-                />
+                <FormItem
+                  hasFeedback
+                  validateStatus={slugError ? 'warning' : null}
+                >
+                  <Input
+                    name="slug"
+                    onChange={this.onChange}
+                    value={slug}
+                    placeholder="Slug.."
+                  />
+                </FormItem>
               </div>
               <div className="input">
-                <TextArea
-                  rows={33}
-                  name="markdown"
-                  onChange={this.onChange}
-                  value={markdown}
-                  placeholder="Write in markdown!"
-                />
+                <FormItem
+                  hasFeedback
+                  validateStatus={categoryError ? 'warning' : null}
+                >
+                  <Select
+                    showSearch
+                    style={{ width: 200 }}
+                    placeholder="Select category"
+                    optionFilterProp="children"
+                    onChange={this.handleSelectChange}
+                  >
+                    <Option value="programming">Programming</Option>
+                    <Option value="design">Design</Option>
+                    <Option value="other">Other</Option>
+                  </Select>
+                </FormItem>
+              </div>
+              <div className="input">
+                <FormItem
+                  hasFeedback
+                  validateStatus={imageError ? 'warning' : null}
+                >
+                  <Input
+                    name="image"
+                    onChange={this.onChange}
+                    value={image}
+                    placeholder="Image link here..."
+                  />
+                </FormItem>
+              </div>
+              <div className="input">
+                <FormItem
+                  hasFeedback
+                  validateStatus={markdownError ? 'warning' : null}
+                >
+                  <TextArea
+                    rows={25}
+                    name="markdown"
+                    onChange={this.onChange}
+                    value={markdown}
+                    placeholder="Write in markdown!"
+                  />
+                </FormItem>
               </div>
               <Button onClick={this.onSubmit}>Submit</Button>
             </div>
-          </Col>
-        </Row>
-        <Row type="flex" justify="end" gutter={10}>
-          <Col xs={24} sm={24} md={17} lg={18} xl={19}>
             <div className="post-preview">
               <div className="post-preview-title">post preview</div>
               <div className="post-title">
