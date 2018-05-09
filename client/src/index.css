@@ -26,6 +26,36 @@ h6 {
   color: pink;
 }
 
+.iconHamburger {
+  display: block;
+  position: relative;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  float: right;
+  margin-top: 8px;
+}
+
+.iconHamburger:before {
+  background: #777;
+  border-radius: 2px;
+  box-shadow: 0 6px 0 0 #777, 0 12px 0 0 #777;
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  width: 24px;
+  top: 18px;
+  right: 13px;
+}
+
+.mobile-navigation {
+  border-right: 0;
+}
+
+/* General */
+
 .container {
   margin: 10px;
   padding: 20px;
@@ -42,6 +72,20 @@ h6 {
 
 .input {
   margin-bottom: 16px;
+}
+
+.input button {
+  margin-top: 10px;
+}
+
+.input i {
+  color: green;
+  font-size: 2em;
+}
+
+.login-error {
+  color: #f93887;
+  margin: 16px 0;
 }
 
 .post-preview {

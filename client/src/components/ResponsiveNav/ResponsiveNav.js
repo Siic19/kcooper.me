@@ -6,8 +6,6 @@ import throttle from 'lodash.throttle';
 // https://ant.design/docs/react/getting-started#Import-on-Demand
 import { Popover, Icon } from 'antd'
 
-import './styles.css';
-
 class ResponsiveNav extends Component {
   state = {
     viewportWidth: 0,
