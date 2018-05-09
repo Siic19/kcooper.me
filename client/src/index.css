@@ -209,8 +209,70 @@ pre {
 }
 
 .cell {
+  border: 5px solid #fff;
   width: 100%;
   height: 100%;
+}
+
+.cell-container {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+}
+
+.cell-box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #fff;
+}
+
+.cell-title {
+  position: absolute;
+  margin-left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 2.3em;
+  text-transform: uppercase;
+}
+
+.cell-category {
+  position: absolute;
+  margin-left: 20px;
+  top: 65%;
+  transform: translateY(-65%);
+  color: #fff;
+  border: 1px solid #fff;
+  line-height: 1;
+  padding: 5px 20px;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.cell-date {
+  position: absolute;
+  margin-left: 20px;
+  top: 80%;
+  transform: translateY(-80%);
+  color: #fff;
+  border: 1px solid #fff;
+  line-height: 1;
+  padding: 5px 20px;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.cell-tint {
+  background-color: #64a5bc;
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .masonry-cell {
@@ -219,7 +281,7 @@ pre {
 }
 
 .masonry-cell2 {
-  background-color: darkseagreen;
+  cursor: pointer;
 }
 
 .avatar {
