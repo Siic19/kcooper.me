@@ -16,7 +16,7 @@ class Post extends Component {
             if (loading) return 'Loading...'
             if (error) return `Error! ${error.message}`
 
-            const { title, category, markdown } = data.findPost
+            const { title, category, markdown, createdAt } = data.findPost
 
             return (
               <div>
@@ -28,6 +28,7 @@ class Post extends Component {
                   title={title}
                   category={category}
                   markdown={markdown}
+                  createdAt={createdAt}
                 />
               </div>
             )
@@ -45,6 +46,7 @@ const allPostsQuery = gql`
       title
       category
       markdown
+      createdAt
     }
   }
 `

@@ -23,8 +23,15 @@ const highlight = (str, lang) => {
   return ''
 }
 
+function dateConfig(date) {
+  const dateSplit = date.split(' ', 4)
+  dateSplit.shift()
+  dateSplit[1] = dateSplit[1] += ','
+  return dateSplit.join(' ')
+}
+
 const PostReturn = (props) => {
-  const { title, category, markdown } = props
+  const { title, category, markdown, createdAt } = props
   return (
       <Row gutter={10}>
         <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
@@ -37,7 +44,8 @@ const PostReturn = (props) => {
         <Col className="post-col-right" xs={24} sm={24} md={17} lg={18} xl={19}>
           <div className="post-title">
             <h1>{title}</h1>
-            <hr />
+            <div className="post-category"><span>{category}</span></div>
+            <div className="post-date">{dateConfig(createdAt)}</div>
           </div>
           <div className="post-content">
             <Markdown options={{ highlight }} source={markdown} />

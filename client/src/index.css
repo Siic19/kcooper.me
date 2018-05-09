@@ -57,10 +57,6 @@ h6 {
   margin-bottom: 10px;
 }
 
-/* .ui.segment:first-child {
-  margin-bottom: 0;
-} */
-
 /* Home Page */
 
 .cell {
@@ -171,18 +167,25 @@ h6 {
 
 .post-title h1 {
   font-size: 7em;
-  width: 80%;
   color: #64a5bc;
+  line-height: 1;
+  margin-bottom: 15px;
 }
 
-.post-title hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-  width: 80%;
+.post-category span {
+  background-color: #f93887;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  font-size: 2.3em;
+  line-height: 1.2;
+}
+
+.post-date {
+  color: #7a7a7a;
+  font-size: 1em;
+  margin-top: 10px;
+  font-style: italic;
 }
 
 .post-content {
@@ -265,7 +268,7 @@ pre {
   line-height: 70px;
   padding-top: 15px;
   padding-right: 8px;
-  color: #64a5bc;
+  color: #f93887;
 }
 
 .vertical-text {
@@ -336,7 +339,7 @@ pre {
   padding: 25px;
 }
 
-.blog-title h1{
+.blog-title h1 {
   color: #64a5bc;
   font-size: 4em;
   margin: 0;
@@ -348,7 +351,7 @@ pre {
   margin-bottom: 5px;
 }
 
-.blog-date span{
+.blog-date span {
   background-color: #f93887;
   color: #fff;
   text-transform: uppercase;
