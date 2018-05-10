@@ -47,7 +47,7 @@ class Background extends Component {
           <title>KCooper.me | Background</title>
         </Helmet>
         <Row gutter={10}>
-          <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
+          <Col className="post-col-left" xs={24} sm={24} md={24} lg={6} xl={5}>
             <Row type="flex" justify="center" align="top">
               <Col span={24}>
                 <div className="vertical-text">background</div>
@@ -58,7 +58,7 @@ class Background extends Component {
             className="blog-col-right"
             xs={24}
             sm={24}
-            md={17}
+            md={24}
             lg={18}
             xl={19}
           >
