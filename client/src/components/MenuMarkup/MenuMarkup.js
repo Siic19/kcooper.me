@@ -23,15 +23,15 @@ const MenuMarkup = ({
       defaultSelectedKeys={['/' + href]}
       selectedKeys={['/' + href]}
       className={className}
-      style={{ lineHeight: '64px' }}
+      style={{ lineHeight: '63px' }}
     >
       <Menu.Item key="/">
         <Link to="/" className="logo">
           KCOOPER.ME
         </Link>
       </Menu.Item>
-      <Menu.Item key="/about">
-        <Link to="/about">About Me</Link>
+      <Menu.Item key="/background">
+        <Link to="/background">Background</Link>
       </Menu.Item>
       <Menu.Item key="/blog">
         <Link to="/blog">Blog</Link>

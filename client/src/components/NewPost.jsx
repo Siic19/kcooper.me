@@ -94,14 +94,15 @@ class NewPost extends React.Component {
 
     if (!error) {
       try {
-        this.isLoading = true;
-        const response = await this.props.mutate({
+        this.isLoading = true
+        await this.props.mutate({
           variables: { title, slug, category, markdown, image },
         })
-        this.successfullyPosted = true;
-        this.isLoading = false;
+
+        this.successfullyPosted = true
+        this.isLoading = false
       } catch (err) {
-        this.isLoading = false;
+        this.isLoading = false
         return
       }
     }
@@ -218,7 +219,9 @@ class NewPost extends React.Component {
                   />
                 </FormItem>
               </div>
-              <Button loading={isLoading} onClick={this.onSubmit}>Submit</Button>
+              <Button loading={isLoading} onClick={this.onSubmit}>
+                Submit
+              </Button>
               {this.successfullyPosted ? <span>Posted!</span> : null}
             </div>
             <div className="post-preview">

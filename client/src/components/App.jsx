@@ -10,7 +10,7 @@ import Home from './Home'
 import NewPost from './NewPost'
 import Post from './Post'
 import Blog from './Blog'
-import About from './About'
+import Background from './Background'
 import FooterComponent from './FooterComponent'
 import decode from 'jwt-decode'
 
@@ -109,7 +109,7 @@ const App = (props) => {
             </AnimatedSwitch>
             <Route exact path="/" component={Home} />
             <Route exact path="/blog" component={Blog} />
-            <Route exact path="/about-me" component={About} />
+            <Route exact path="/background" component={Background} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/new-post" component={NewPost} />
             <Footer>
