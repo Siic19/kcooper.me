@@ -45,7 +45,7 @@ h6 {
   background: #777;
   border-radius: 2px;
   box-shadow: 0 6px 0 0 #777, 0 12px 0 0 #777;
-  content: "";
+  content: '';
   display: block;
   height: 2px;
   position: absolute;
@@ -68,6 +68,60 @@ h6 {
 }
 
 /* Home Page */
+
+.masonry-cell {
+}
+
+.vertical-home-text {
+  height: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  text-transform: uppercase;
+  line-height: 100%;
+  padding: 20px 0;
+  color: #e8e8e8;
+  background-color: #fff;
+  font-weight: 600;
+  font-size: 24vw;
+  width: 100%;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 10px;
+  display: flex;
+  align-items: center; /* align vertical */
+}
+
+.home-me-right-container {
+  background-color: #fff;
+  padding: 25px;
+  height: 630px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 50%;
+  margin: 0 auto;
+  border: 10px solid #e8e8e8;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.home-write-up {
+  width: 80%;
+  font-size: 1.15em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.masonry-cell2 {
+  cursor: pointer;
+}
 
 .cell {
   border: 5px solid #fff;
@@ -136,20 +190,6 @@ h6 {
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-.masonry-cell {
-  padding: 20px;
-  background-color: #fff;
-}
-
-.masonry-cell2 {
-  cursor: pointer;
-}
-
-.avatar {
-  width: 30%;
-  float: left;
 }
 
 /* Login / New Post */
@@ -222,7 +262,7 @@ h6 {
   height: 100%;
 }
 
-.modal-image img{
+.modal-image img {
   width: 100%;
 }
 
@@ -243,33 +283,31 @@ h6 {
   padding: 25px;
 }
 
-.background-projects p{
+.background-projects p {
   margin: 20px 0;
 }
 
-.background-project button{
+.background-project button {
   margin: 20px 10px 0 0;
 }
 
 .background-stack {
-  font-size: .8em;
+  font-size: 0.8em;
   color: #f93887;
   text-align: center;
   margin-top: 5px;
   margin-left: -15px;
 }
 
-.background-stack img{
+.background-stack img {
   width: 70%;
   height: 70%;
   margin-bottom: 10px;
 }
 
-
 .background-stack p {
   color: blue;
 }
-
 
 /* Post Page */
 
@@ -636,7 +674,62 @@ select:-webkit-autofill:focus {
   }
 }
 
-@media all and (max-width: 767px) {
+/* AntD md size */
+@media all and (max-width: 991px) {
+  .vertical-home-text {
+    writing-mode: unset;
+    text-orientation: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -o-transform: unset;
+    -ms-transform: unset;
+    transform: unset;
+    text-transform: uppercase;
+    line-height: 100%;
+    color: #e8e8e8;
+    background-color: #fff;
+    font-weight: 600;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    align-items: center; /* align vertical */
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .vertical-text {
+    writing-mode: unset;
+    text-orientation: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -o-transform: unset;
+    -ms-transform: unset;
+    transform: unset;
+    text-transform: uppercase;
+    line-height: 100%;
+    color: #e8e8e8;
+    background-color: #fff;
+    font-weight: 600;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    align-items: center; /* align vertical */
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .home-me-right-container {
+    height: 900px;
+  }
+  .avatar {
+    margin-bottom: 50px;
+  }
+  .home-write-up {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 768px) {
+
+
   .footer-social {
     text-align: center;
     padding: 50px 0;
@@ -651,13 +744,33 @@ select:-webkit-autofill:focus {
     font-size: 3em;
     text-align: center;
   }
+
+  .avatar {
+    width: 75%;
+  }
+  .home-write-up {
+    width: 95%;
+  }
 }
+
+@media all and (max-width: 480px) {
+  .home-me-right-container {
+    height: 740px;
+  }
+  .avatar {
+    width: 90%;
+  }
+}
+
 
 /* Media Queries specific to the vertical text size */
 
 @media all and (min-width: 50px) {
   .vertical-text {
     font-size: 0.1em;
+  }
+  .vertical-home-text {
+    height: 200px;
   }
 }
 @media all and (min-width: 100px) {
@@ -694,45 +807,83 @@ select:-webkit-autofill:focus {
   .vertical-text {
     font-size: 1.4em;
   }
+  .vertical-home-text {
+    font-size: 10.5em;
+    letter-spacing: 32px;
+    height: 200px;
+  }
 }
 @media all and (min-width: 800px) {
   .vertical-text {
     font-size: 1.6em;
+  }
+  .vertical-home-text {
+    font-size: 10em;
+    letter-spacing: 42px;
+    height: 200px;
   }
 }
 @media all and (min-width: 900px) {
   .vertical-text {
     font-size: 1.8em;
   }
+  .vertical-home-text {
+    height: 200px;
+  }
 }
-@media all and (min-width: 991px) {
+@media all and (min-width: 992px) {
   .vertical-text {
     font-size: 15.5em;
+  }
+  .vertical-home-text {
+    font-size: 10.5em;
+    letter-spacing: 32px;
+    height: 100%;
   }
 }
 @media all and (min-width: 1100px) {
   .vertical-text {
     font-size: 16.3em;
   }
+  .vertical-home-text {
+    font-size: 11em;
+    letter-spacing: 29px;
+  }
 }
 @media all and (min-width: 1200px) {
   .vertical-text {
     font-size: 17em;
+  }
+  .vertical-home-text {
+    font-size: 11em;
+    letter-spacing: 28px;
   }
 }
 @media all and (min-width: 1300px) {
   .vertical-text {
     font-size: 18em;
   }
+  .vertical-home-text {
+    font-size: 12em;
+    letter-spacing: 21px;
+  }
 }
 @media all and (min-width: 1400px) {
   .vertical-text {
     font-size: 19em;
   }
+  .vertical-home-text {
+    font-size: 12.5em;
+    letter-spacing: 17px;
+  }
 }
 @media all and (min-width: 1500px) {
   .vertical-text {
     font-size: 21.8em;
+  }
+  .vertical-home-text {
+    font-size: 13em;
+    letter-spacing: 13px;
   }
 }
 @media all and (min-width: 1600px) {

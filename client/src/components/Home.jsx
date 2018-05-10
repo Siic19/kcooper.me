@@ -9,9 +9,9 @@ import { observer } from 'mobx-react'
 
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
-import { Helmet } from 'react-helmet'
+import HomeMe from './HomeMe'
 
-import avatar from '../images/kelsey_avatar.svg'
+import { Helmet } from 'react-helmet'
 
 import { Motion, spring } from 'react-motion'
 
@@ -53,14 +53,11 @@ class Home extends Component {
                 <ResponsiveGridLayout
                   className="layout"
                   layouts={layouts}
-                  breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+                  breakpoints={{ lg: 1200, md: 991, sm: 768, xs: 480, xxs: 0 }}
                   cols={{ lg: 12, md: 9, sm: 6, xs: 4, xxs: 2 }}
                 >
                   <div className="masonry-cell me" key="1">
-                    <div className="avatar">
-                      <img src={avatar} alt="Kelsey Cooper" />
-                      {hoveredID}
-                    </div>
+                    <HomeMe />
                   </div>
                   {data.allPosts.map((post, index) => (
                     <div
@@ -90,9 +87,12 @@ class Home extends Component {
                             tint: spring(hoveredID === index + 2 ? 0.75 : 0),
                             categoryY: spring(
                               hoveredID === index + 2 ? -10 : 0,
-                              {stiffness: 120, damping: 40}
+                              { stiffness: 120, damping: 40 },
                             ),
-                            dateY: spring(hoveredID === index + 2 ? -15 : 0, {stiffness: 100, damping: 40}),
+                            dateY: spring(hoveredID === index + 2 ? -15 : 0, {
+                              stiffness: 100,
+                              damping: 40,
+                            }),
                           }}
                         >
                           {(style) => (
@@ -119,13 +119,21 @@ class Home extends Component {
                                 <div className="cell-title">{post.title}</div>
                                 <div
                                   className="cell-category"
-                                  style={{ opacity: style.opacity, transform: `translateY(${style.categoryY}px)` }}
+                                  style={{
+                                    opacity: style.opacity,
+                                    transform: `translateY(${
+                                      style.categoryY
+                                    }px)`,
+                                  }}
                                 >
                                   {post.category}
                                 </div>
                                 <div
                                   className="cell-date"
-                                  style={{ opacity: style.opacity,  transform: `translateY(${style.dateY}px)` }}
+                                  style={{
+                                    opacity: style.opacity,
+                                    transform: `translateY(${style.dateY}px)`,
+                                  }}
                                 >
                                   {this.dateConfig(post.createdAt)}
                                 </div>

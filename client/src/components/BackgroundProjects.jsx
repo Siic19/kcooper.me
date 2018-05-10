@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { Col, Row, Button, Modal } from 'antd'
-import { Link } from 'react-router-dom'
 
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
