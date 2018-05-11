@@ -64,14 +64,14 @@ class Background extends Component {
           >
             <div className="background-container">
               <div className="background-passion">
-                <h1>My Passion</h1>
+                <h1>Motivation</h1>
                 <p>
-                  I have a few things that push me in life beyond my love of
-                  learning, design, and developement.
+                  I have a few things beyond my love of learning, design, and
+                  development that motivate me.
                 </p>
                 <p>
-                  My wife to be Heidi, who is the hardest working person I know.
-                  I have watched her push through 3 years of law school in 2
+                  My wife-to-be Heidi is the hardest working person I know. I
+                  have watched her push through 3 years of law school, in 2
                   different provinces to accomplish her dream of becoming a
                   practicing lawyer.
                 </p>
@@ -88,10 +88,11 @@ class Background extends Component {
                   </div>
                 </Modal>
                 <p>
-                  My ever loving, ever hyper, ever watchful dog Rexi. The half
-                  pitbut, half husky mix we brought back from Fredericton NB, to
-                  Victoria under heavy sedation. She has kept me active and
-                  taking needed breaks for 4 years.
+                  My ever loving, ever hyper, ever watchful dog Rexi has kept me
+                  active and taking needed breaks for 4 years. She is a half
+                  pit-bull, half husky mix who flew from Fredericton NB, to
+                  Victoria, BC with us under heavy sedation. She is full of
+                  personality and makes me laugh every day.
                 </p>
                 <Button type="dashed" onClick={this.showRexi}>
                   Picture of the always loving Rexi

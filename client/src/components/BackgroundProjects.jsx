@@ -102,8 +102,8 @@ class BackgroundProjects extends Component {
         <div className="background-project">
           <h2>kcooper.me</h2>
           <p>
-            This wonderful site is a vast upgrade from my old site and let me
-            learn GraphQL, Apollo, Ant Design, and React Motion.
+            This site is a vast upgrade from my old site and let me learn
+            GraphQL, Apollo, Ant Design, and React Motion.
           </p>
           <div className="background-stack">
             <Row type="flex" justify="start">
@@ -124,7 +124,7 @@ class BackgroundProjects extends Component {
         <div className="background-project">
           <h2>Shopify Custom Shipping App</h2>
           <p>
-            An integrated Shopify application to offer custom shipping to
+            An integrated Shopify application built to offer custom shipping to
             customers, and configuration to the Shopify store owner.
             Installation uses Shopify Express and the Shopify API. Front end
             React, Redux, and Shopify Polaris.
@@ -177,8 +177,8 @@ class BackgroundProjects extends Component {
           <p>
             Statistic keeping and tracking application. Designed to let a user
             log in and track their sales demographics and other specific sales
-            data. Using ChartJS to display the stored data. Also my first dive
-            into Redux.
+            data. Using ChartJS to display the stored data. This project my
+            first dive into Redux.
           </p>
           <div className="background-stack">
             <Row type="flex" justify="start">
@@ -237,11 +237,11 @@ class BackgroundProjects extends Component {
           <h2>Block Blitz</h2>
           <p>
             Final project at Lighthouse Labs. Competitive puzzle solving game,
-            with lobby. The idea for the game was spawn from playing with
-            <a href="https://packery.metafizzy.co/"> Packery</a> Library by
+            with lobby. The idea for the game was spawned from playing with
+            <a href="https://packery.metafizzy.co/"> Packery</a> a Library by
             <a href="https://metafizzy.co/"> Metafizzy</a>. A socket server was
             used to let players compete against each other in real time.
-            Facebook login enabled using thier SDK.
+            Facebook login enabled using their SDK.
           </p>
           <div className="background-stack">
             <Row type="flex" justify="start">
@@ -301,12 +301,12 @@ class BackgroundProjects extends Component {
         <div className="background-project">
           <h2>Jungle App</h2>
           <p>
-            My first dive into Rails and Active Record, one of the later
+            My first dive into Ruby, Rails, and Active Record. One of the later
             projects in Lighthouse Labs. We were given an already made store and
             given tasks to add functionality. This functionality included adding
             an admin panel with connected routes to add/remove/edit items to
-            specific categories in the store and place things on sale. Also add
-            a star rating system for customers.
+            specific categories in the store and placing items on sale. I also
+            added a star rating system for logged in customers.
           </p>
           <div className="background-stack">
             <Row type="flex" justify="start">
@@ -359,8 +359,8 @@ class BackgroundProjects extends Component {
           <h2>Smappy</h2>
           <p>
             This map app allows users to collaboratively create maps using the
-            Google Maps API. Users are then able to create markers on the maps
-            identifying certain locations like "Best Chinese Food in Victoria.
+            Google Maps API. Users are able to create markers on the maps which
+            identify certain locations like "Best Chinese Food” in Victoria.
             This was a group project in week 4 of the Lighthouse Labs Bootcamp.
           </p>
           <div className="background-stack">
@@ -415,10 +415,10 @@ class BackgroundProjects extends Component {
         <div className="background-project">
           <h2>Tweeter</h2>
           <p>
-            Tweeter is a Twitter clone. My first real dive into more complicated
-            apps. The focus was on the front end, which uses a lot of jQuery and
-            Ajax to make any calls to the server. Live site was pushed to
-            Heroku.
+            Tweeter is a Twitter clone. My first endeavour at coding more
+            complicated apps. The focus was on the front end, which uses of
+            jQuery and Ajax to make any calls to the server. The live site was
+            pushed to Heroku.
           </p>
           <div className="background-stack">
             <Row type="flex" justify="start">

@@ -22,17 +22,19 @@ const HomeMe = () => {
             </div>
             <div className="home-write-up">
               <p>
-                Hey my name is Kelsey Cooper. I'm a Full Stack Developer in
-                beautiful Victoria, BC Canada.
+                Hey! My name is Kelsey Cooper. I'm a Full Stack Developer in
+                beautiful Victoria, BC, Canada.
               </p>
               <p>
-                I was introduced to the basics of development in 2011 when I
-                attended the Pacific Design Academy for Graphic Design.
+                I began my coding journey in 2011 when I attended the Pacific
+                Design Academy for Graphic Design.
               </p>
               <p>
-                In the fall of 2017 I joined Lighthouse Labs. There I was able
-                to greatly increase my skills and knowledge of Aplication Design
-                furthering me on my goal to becoming a full time developer.
+                In the fall of 2017, I joined Lighthouse Labs. Lighthouse Labs
+                provided me with the opportunity to build on my self taught
+                fundamental knowledge and bring me closer to my goal of being a
+                full time developer. Since Lighthouse Labs, I have continued to
+                build and grow my confidence in coding.
               </p>
             </div>
           </div>
