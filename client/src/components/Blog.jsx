@@ -35,7 +35,7 @@ class Blog extends Component {
           <title>KCooper.me | Blog</title>
         </Helmet>
         <Row gutter={10}>
-          <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
+          <Col className="post-col-left" xs={24} sm={24} md={24} lg={6} xl={5}>
             <Row type="flex" justify="center" align="top">
               <Col span={24}>
                 <div className="vertical-text">weblog</div>
@@ -46,7 +46,7 @@ class Blog extends Component {
             className="blog-col-right"
             xs={24}
             sm={24}
-            md={17}
+            md={24}
             lg={18}
             xl={19}
           >
@@ -75,12 +75,18 @@ class Blog extends Component {
                 )
               }}
             </Query>
-            <Col xs={6} sm={6} md={8} lg={8}>
+            <Col xs={24} sm={24} md={24} lg={24}>
               <div className="blog-pagination">
-                <Row type="flex" justify="space-between" align="top">
-                  <Icon onClick={this.onClickDown} type="arrow-left" />
-                  page {(offset / 5) + 1}
+                <Row type="flex" justify="center" align="top">
+                  <Col xs={6} sm={6} md={6} log={6}>
+                    <Icon onClick={this.onClickDown} type="arrow-left" />
+                  </Col>
+                  <Col xs={6} sm={6} md={6} log={6}>
+                  page {offset / 5 + 1}
+                  </Col>
+                  <Col xs={6} sm={6} md={6} log={6}>
                   <Icon onClick={this.onClickUp} type="arrow-right" />
+                  </Col>
                 </Row>
               </div>
             </Col>
