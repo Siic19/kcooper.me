@@ -34,14 +34,14 @@ const PostReturn = (props) => {
   const { title, category, markdown, createdAt } = props
   return (
       <Row gutter={10}>
-        <Col className="post-col-left" xs={24} sm={24} md={17} lg={6} xl={5}>
+        <Col className="post-col-left" xs={24} sm={24} md={24} lg={6} xl={5}>
           <Row type="flex" justify="center" align="top">
             <Col span={24}>
               <div className="vertical-text">{category}</div>
             </Col>
           </Row>
         </Col>
-        <Col className="post-col-right" xs={24} sm={24} md={17} lg={18} xl={19}>
+        <Col className="post-col-right" xs={24} sm={24} md={24} lg={18} xl={19}>
           <div className="post-title">
             <h1>{title}</h1>
             <div className="post-category"><span>{category}</span></div>
