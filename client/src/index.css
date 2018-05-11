@@ -69,11 +69,8 @@ h6 {
 
 /* Home Page */
 
-.masonry-cell {
-}
-
 .vertical-home-text {
-  height: 100%;
+  height: 630px;
   writing-mode: vertical-rl;
   text-orientation: sideways-right;
   -webkit-transform: rotate(180deg);
@@ -399,7 +396,7 @@ pre code {
   font-family: 'Courier', sans-serif;
   font-size: 1em;
   font-weight: 300;
-  color: #52595d;
+  color: #929191;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
@@ -426,7 +423,6 @@ pre {
   color: #393939;
   margin: 0px;
   margin-bottom: 10px;
-  width: 80%;
 }
 
 .post-content p {
@@ -620,6 +616,7 @@ pre {
   letter-spacing: 2px;
   padding-top: 60px;
 }
+
 .footer-form-container .contact-form-message i {
   font-size: 5em;
   margin: 20px 0 30px 0;
@@ -674,6 +671,7 @@ select:-webkit-autofill:focus {
   .react-draggable {
     display: none;
   }
+
   .background-stack {
     margin-left: -5px;
   }
@@ -689,18 +687,13 @@ select:-webkit-autofill:focus {
     -o-transform: unset;
     -ms-transform: unset;
     transform: unset;
-    text-transform: uppercase;
-    line-height: 100%;
-    color: #e8e8e8;
-    background-color: #fff;
-    font-weight: 600;
     width: 100%;
-    font-family: 'Oswald', sans-serif;
     display: flex;
     align-items: center; /* align vertical */
     justify-content: center;
     margin-bottom: 10px;
   }
+
   .vertical-text {
     writing-mode: unset;
     text-orientation: unset;
@@ -709,13 +702,7 @@ select:-webkit-autofill:focus {
     -o-transform: unset;
     -ms-transform: unset;
     transform: unset;
-    text-transform: uppercase;
-    line-height: 100%;
-    color: #e8e8e8;
-    background-color: #fff;
-    font-weight: 600;
     width: 100%;
-    font-family: 'Oswald', sans-serif;
     display: flex;
     align-items: center; /* align vertical */
     justify-content: center;
@@ -724,29 +711,31 @@ select:-webkit-autofill:focus {
   .home-me-right-container {
     height: 900px;
   }
+
   .avatar {
     margin-bottom: 50px;
   }
+
   .home-write-up {
     width: 90%;
   }
+
   .background-stack {
     margin-left: -15px;
   }
-
 }
 
 @media all and (max-width: 768px) {
-
-
   .footer-social {
     text-align: center;
     padding: 50px 0;
   }
+
   .footer-social span {
     letter-spacing: 2px;
     font-size: 2.5em;
   }
+
   .footer-social i {
     margin-top: 50px;
     padding-bottom: 20px;
@@ -757,6 +746,7 @@ select:-webkit-autofill:focus {
   .avatar {
     width: 75%;
   }
+
   .home-write-up {
     width: 95%;
   }
@@ -764,9 +754,11 @@ select:-webkit-autofill:focus {
   .background-container p {
     width: 90%;
   }
+
   .background-stack {
     margin-left: -10px;
   }
+
   .blog-title h1 {
     font-size: 2em;
     margin-bottom: 15px;
@@ -780,7 +772,7 @@ select:-webkit-autofill:focus {
     font-size: 4em;
     margin-bottom: 20px;
   }
-  
+
   .post-category span {
     font-size: 1.5em;
     letter-spacing: 2px;
@@ -803,27 +795,33 @@ select:-webkit-autofill:focus {
     font-size: 1.2em;
     line-height: 2;
   }
-  
+
+  .background-container h1 {
+    font-size: 3em;
+  }
 }
 
 @media all and (max-width: 480px) {
   .home-me-right-container {
     height: 740px;
   }
+
   .avatar {
     width: 90%;
   }
+
   .background-container p {
     width: 100%;
   }
+
   .background-stack {
     margin-left: -5px;
   }
+
   .blog-image {
     height: 300px;
   }
 }
-
 
 /* Media Queries specific to the vertical text size */
 
@@ -832,18 +830,14 @@ select:-webkit-autofill:focus {
     height: 200px;
     font-size: 8vw;
   }
+
   .vertical-home-text {
     height: 200px;
   }
 }
-@media all and (min-width: 100px) {
-  .vertical-text {
-    /* font-size: 0.2em; */
-  }
-}
+
 @media all and (min-width: 200px) {
   .vertical-text {
-    /* font-size: 0.4em; */
     font-size: 10vw;
   }
 }
@@ -860,19 +854,15 @@ select:-webkit-autofill:focus {
 }
 @media all and (min-width: 500px) {
   .vertical-text {
-    /* font-size: 1em; */
     font-size: 11vw;
   }
 }
-@media all and (min-width: 600px) {
-  .vertical-text {
-    /* font-size: 1.2em; */
-  }
-}
+
 @media all and (min-width: 700px) {
   .vertical-text {
     font-size: 11vw;
   }
+
   .vertical-home-text {
     font-size: 10.5em;
     letter-spacing: 32px;
@@ -880,9 +870,6 @@ select:-webkit-autofill:focus {
   }
 }
 @media all and (min-width: 800px) {
-  .vertical-text {
-    /* font-size: 1.6em; */
-  }
   .vertical-home-text {
     font-size: 10em;
     letter-spacing: 42px;
@@ -894,6 +881,7 @@ select:-webkit-autofill:focus {
     height: 200px;
     font-size: 12vw;
   }
+
   .vertical-home-text {
     height: 200px;
   }
@@ -903,16 +891,18 @@ select:-webkit-autofill:focus {
     font-size: 15.5em;
     height: auto;
   }
+
   .vertical-home-text {
     font-size: 10.5em;
     letter-spacing: 32px;
-    height: 100%;
+    height: 630px;
   }
 }
 @media all and (min-width: 1100px) {
   .vertical-text {
     font-size: 16.3em;
   }
+
   .vertical-home-text {
     font-size: 11em;
     letter-spacing: 29px;
@@ -922,6 +912,7 @@ select:-webkit-autofill:focus {
   .vertical-text {
     font-size: 17em;
   }
+
   .vertical-home-text {
     font-size: 11em;
     letter-spacing: 28px;
@@ -931,6 +922,7 @@ select:-webkit-autofill:focus {
   .vertical-text {
     font-size: 18em;
   }
+
   .vertical-home-text {
     font-size: 12em;
     letter-spacing: 21px;
@@ -940,6 +932,7 @@ select:-webkit-autofill:focus {
   .vertical-text {
     font-size: 19em;
   }
+
   .vertical-home-text {
     font-size: 12.5em;
     letter-spacing: 17px;
@@ -949,6 +942,7 @@ select:-webkit-autofill:focus {
   .vertical-text {
     font-size: 21.8em;
   }
+
   .vertical-home-text {
     font-size: 13em;
     letter-spacing: 13px;
