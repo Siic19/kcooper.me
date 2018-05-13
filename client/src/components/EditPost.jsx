@@ -119,7 +119,6 @@ class EditPost extends Component {
     if (!error) {
       try {
         this.isLoading = true
-        console.log('sp,etjing')
         await this.props.editPost({
           variables: { title, slug, category, markdown, image, id },
         })
@@ -132,6 +131,21 @@ class EditPost extends Component {
         this.isLoading = false
         return
       }
+    }
+  }
+
+  onSubmitDelete = async () => {
+    const { id } = this
+    try {
+      this.isLoading = true
+      await this.props.deletePost({
+        variables: { id },
+      })
+      //this is where we will redirect
+    } catch (err) {
+      console.log(err)
+
+      return
     }
   }
 
@@ -256,8 +270,21 @@ class EditPost extends Component {
               <Button loading={isLoading} onClick={this.onSubmit}>
                 Edit
               </Button>
-              {this.successfullyEdited ? <span style={{marginLeft: '10px' }}>Edited!</span> : null}
-              <Button loading={isLoading} onClick={this.onSubmitDelete} type="danger" style={{marginLeft: '10px'}}>
+              {this.successfullyEdited ? (
+                <span style={{ marginLeft: '10px' }}>Edited!</span>
+              ) : null}
+              <Button
+                loading={isLoading}
+                onClick={() => {
+                  if (
+                    window.confirm('Are you sure you want to delete this post?')
+                  ) {
+                    this.onSubmitDelete()
+                  }
+                }}
+                type="danger"
+                style={{ marginLeft: '10px' }}
+              >
                 Delete
               </Button>
             </div>
@@ -323,12 +350,19 @@ const editPostMutation = gql`
   }
 `
 
+const deletePostMutation = gql`
+  mutation($id: Int!) {
+    deletePost(id: $id)
+  }
+`
+
 const EditPostMutations = compose(
   graphql(findPostQuery, {
     name: 'FindPost',
     options: (props) => ({ variables: { slug: props.match.params.slug } }),
   }),
   graphql(editPostMutation, { name: 'editPost' }),
+  graphql(deletePostMutation, {name: 'deletePost' }),
 )(observer(EditPost))
 
 export default EditPostMutations
