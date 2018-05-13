@@ -272,4 +272,6 @@ const newPostMutation = gql`
     }
   }
 `
+
+
 export default graphql(newPostMutation)(observer(NewPost))

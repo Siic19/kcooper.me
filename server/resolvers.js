@@ -63,8 +63,6 @@ export default {
       }
     },
     findPost: (parent, args, { models }) => {
-      console.log(typeof args.slug)
-
       return models.Post.findOne({
         where: {
           slug: args.slug,
@@ -113,22 +111,22 @@ export default {
       async (parent, args, { models, user }) => {
         const { title, slug, category, image, markdown, id } = args
         // return await models.Post.create(args)
-        mods.Post.update(
-          {
-            title: title,
-            slug: slug,
-            category: category,
-            image: image,
-            markdown: markdown,
-          },
-          { _id: id },
-        )
-          .success(function() {
-            console.log('Project with id =1 updated successfully!')
-          })
-          .error(function(err) {
-            console.log('Project update failed !')
-          })
+        let response = null
+        try {
+          const something = await models.Post.update(
+            {
+              title: title,
+              slug: slug,
+              category: category,
+              image: image,
+              markdown: markdown,
+            },
+            { where: { id: id } },
+          )
+          return true
+        } catch (err) {
+          return false
+        }
       },
     ),
     sendEmail: async (parent, args, { models }) => {

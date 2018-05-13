@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { Row, Col, Input, Button, Select, Form } from 'antd'
-import { Query } from 'react-apollo'
+import { graphql, Query, compose, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Helmet } from 'react-helmet'
 
@@ -49,8 +49,90 @@ class EditPost extends Component {
       markdownError: false,
       imageError: false,
       isLoading: false,
-      successfullyPosted: false,
+      successfullyEdited: false,
     })
+  }
+
+  async componentDidMount() {
+    const slug = this.props.match.params
+
+    try {
+      const response = await this.props.FindPost.refetch({})
+      const {
+        title,
+        category,
+        markdown,
+        slug,
+        image,
+        id,
+      } = response.data.findPost
+      this.title = title
+      this.category = category
+      this.markdown = markdown
+      this.slug = slug
+      this.image = image
+      this.id = id
+    } catch (err) {
+      console.log(err)
+
+      return
+    }
+  }
+
+  onSubmit = async () => {
+    console.log(this.id)
+    const { title, slug, category, markdown, image, id } = this
+
+    this.titleError = false
+    this.slugError = false
+    this.categoryError = false
+    this.markdownError = false
+    this.imageError = false
+
+    let error = false
+
+    if (!title) {
+      this.titleError = true
+      error = true
+    }
+
+    if (!slug) {
+      this.slugError = true
+      error = true
+    }
+
+    if (!category) {
+      this.categoryError = true
+      error = true
+    }
+
+    if (!markdown) {
+      this.markdownError = true
+      error = true
+    }
+
+    if (!image) {
+      this.imageError = true
+      error = true
+    }
+
+    if (!error) {
+      try {
+        this.isLoading = true
+        console.log('sp,etjing')
+        await this.props.editPost({
+          variables: { title, slug, category, markdown, image, id },
+        })
+
+        this.successfullyEdited = true
+        this.isLoading = false
+      } catch (err) {
+        console.log(err)
+
+        this.isLoading = false
+        return
+      }
+    }
   }
 
   onChange = (e) => {
@@ -63,48 +145,22 @@ class EditPost extends Component {
   }
 
   render() {
-    const slugFromUrl = this.props.match.params.slug
-
     const {
       title,
       markdown,
       image,
       titleError,
+      slug,
       slugError,
       category,
       categoryError,
       markdownError,
       imageError,
       isLoading,
-      slug,
     } = this
 
     return (
       <div className="post-container">
-        <Query query={allPostsQuery} variables={{ slug: slugFromUrl }}>
-          {({ loading, error, data }) => {
-            if (loading) return 'Loading...'
-            if (error) return `Error! ${error.message}`
-
-            const {
-              title,
-              category,
-              markdown,
-              createdAt,
-              slug,
-              image,
-              id,
-            } = data.findPost
-            this.title = title
-            this.category = category
-            this.markdown = markdown
-            this.slug = slug
-            this.image = image
-            this.id = id
-
-            return null
-          }}
-        </Query>
         <Helmet>
           <title>KCooper.me | New Post</title>
         </Helmet>
@@ -198,9 +254,12 @@ class EditPost extends Component {
                 </FormItem>
               </div>
               <Button loading={isLoading} onClick={this.onSubmit}>
-                Submit
+                Edit
               </Button>
-              {this.successfullyPosted ? <span>Posted!</span> : null}
+              {this.successfullyEdited ? <span style={{marginLeft: '10px' }}>Edited!</span> : null}
+              <Button loading={isLoading} onClick={this.onSubmitDelete} type="danger" style={{marginLeft: '10px'}}>
+                Delete
+              </Button>
             </div>
             <div className="post-preview">
               <div className="post-preview-title">post preview</div>
@@ -230,7 +289,7 @@ class EditPost extends Component {
   }
 }
 
-const allPostsQuery = gql`
+const findPostQuery = gql`
   query($slug: String!) {
     findPost(slug: $slug) {
       id
@@ -244,4 +303,34 @@ const allPostsQuery = gql`
   }
 `
 
-export default observer(EditPost)
+const editPostMutation = gql`
+  mutation(
+    $title: String!
+    $slug: String!
+    $category: String!
+    $markdown: String!
+    $image: String!
+    $id: Int!
+  ) {
+    editPost(
+      title: $title
+      slug: $slug
+      category: $category
+      markdown: $markdown
+      image: $image
+      id: $id
+    )
+  }
+`
+
+const EditPostMutations = compose(
+  graphql(findPostQuery, {
+    name: 'FindPost',
+    options: (props) => ({ variables: { slug: props.match.params.slug } }),
+  }),
+  graphql(editPostMutation, { name: 'editPost' }),
+)(observer(EditPost))
+
+export default EditPostMutations
+
+// export default withApollo(EditPost)
