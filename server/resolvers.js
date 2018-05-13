@@ -12,16 +12,16 @@ const SECRET = process.env.GMAIL_SECRET
 import { GraphQLUpload } from 'apollo-upload-server'
 
 const transporter = nodemailer.createTransport({
-  host: "smtp-mail.outlook.com", // hostname
+  host: 'smtp-mail.outlook.com', // hostname
   secureConnection: false, // TLS requires secureConnection to be false
   port: 587, // port for secure SMTP
   tls: {
-     ciphers:'SSLv3'
+    ciphers: 'SSLv3',
   },
   auth: {
-      user: 'kcoop@live.ca',
-      pass: SECRET
-  }
+    user: 'kcoop@live.ca',
+    pass: SECRET,
+  },
 })
 
 const processUpload = async (upload) => {
@@ -107,6 +107,28 @@ export default {
     createPost: requiresAuth.createResolver(
       async (parent, args, { models, user }) => {
         return await models.Post.create(args)
+      },
+    ),
+    editPost: requiresAuth.createResolver(
+      async (parent, args, { models, user }) => {
+        const { title, slug, category, image, markdown, id } = args
+        // return await models.Post.create(args)
+        mods.Post.update(
+          {
+            title: title,
+            slug: slug,
+            category: category,
+            image: image,
+            markdown: markdown,
+          },
+          { _id: id },
+        )
+          .success(function() {
+            console.log('Project with id =1 updated successfully!')
+          })
+          .error(function(err) {
+            console.log('Project update failed !')
+          })
       },
     ),
     sendEmail: async (parent, args, { models }) => {

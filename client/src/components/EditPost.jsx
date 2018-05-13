@@ -37,6 +37,7 @@ class EditPost extends Component {
     super(props)
 
     extendObservable(this, {
+      id: '',
       title: '',
       slug: '',
       category: '',
@@ -92,12 +93,14 @@ class EditPost extends Component {
               createdAt,
               slug,
               image,
+              id,
             } = data.findPost
             this.title = title
             this.category = category
             this.markdown = markdown
             this.slug = slug
             this.image = image
+            this.id = id
 
             return null
           }}
