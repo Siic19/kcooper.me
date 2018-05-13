@@ -5,6 +5,8 @@ import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
 
+import { Link } from 'react-router-dom'
+
 const highlight = (str, lang) => {
   if (lang && hljs.getLanguage(lang)) {
     try {
@@ -31,7 +33,7 @@ function dateConfig(date) {
 }
 
 const PostReturn = (props) => {
-  const { title, category, markdown, createdAt } = props
+  const { title, category, markdown, createdAt, isLoggedIn, slug } = props
   return (
       <Row gutter={10}>
         <Col className="post-col-left" xs={24} sm={24} md={24} lg={6} xl={5}>
@@ -46,6 +48,7 @@ const PostReturn = (props) => {
             <h1>{title}</h1>
             <div className="post-category"><span>{category}</span></div>
             <div className="post-date">{dateConfig(createdAt)}</div>
+            {isLoggedIn ? <Link to={{ pathname: `/edit-post/${slug}` }}>Edit Post</Link> : <div>not logged in</div>}
           </div>
           <div className="post-content">
             <Markdown options={{ highlight }} source={markdown} />

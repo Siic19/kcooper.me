@@ -12,6 +12,7 @@ import Post from './Post'
 import Blog from './Blog'
 import Background from './Background'
 import FooterComponent from './FooterComponent'
+import EditPost from './EditPost'
 import decode from 'jwt-decode'
 
 import { Layout } from 'antd'
@@ -112,6 +113,7 @@ const App = (props) => {
             <Route exact path="/background" component={Background} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/new-post" component={NewPost} />
+            <PrivateRoute exact path="/edit-post/:slug" component={EditPost} />
             <Footer>
               <FooterComponent/>
               <div id="contact" title="contact"></div>
