@@ -177,7 +177,7 @@ class BackgroundProjects extends Component {
           <p>
             Statistic keeping and tracking application. Designed to let a user
             log in and track their sales demographics and other specific sales
-            data. Using ChartJS to display the stored data. This project my
+            data. Using ChartJS to display the stored data. This project was my
             first dive into Redux.
           </p>
           <div className="background-stack">
@@ -417,7 +417,7 @@ class BackgroundProjects extends Component {
           <p>
             Tweeter is a Twitter clone. My first endeavour at coding more
             complicated apps. The focus was on the front end, which uses of
-            jQuery and Ajax to make any calls to the server. The live site was
+            jQuery and Ajax to make calls to the server. The live site was
             pushed to Heroku.
           </p>
           <div className="background-stack">

@@ -14,13 +14,11 @@ import { ApolloProvider } from 'react-apollo'
 import '../node_modules/react-grid-layout/css/styles.css'
 import '../node_modules/react-resizable/css/styles.css'
 
-const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
-})
+const apiUrl = process.env.NODE_ENV === 'production' ? "http://localhost:3001/graphql" : "https://kcooper.me/graphql"
 
-// const httpLink = createHttpLink({
-//   uri: 'http://localhost:3001/graphql',
-// })
+const httpLink = createHttpLink({
+  uri: apiUrl,
+})
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('token')

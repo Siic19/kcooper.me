@@ -5,21 +5,26 @@ import nodemailer from 'nodemailer'
 
 import requiresAuth from './permissions'
 
-import dotenv from 'dotenv';
-dotenv.config();
-const SECRET = process.env.GMAIL_SECRET;
+import dotenv from 'dotenv'
+dotenv.config()
+const SECRET = process.env.GMAIL_SECRET
 
 import { GraphQLUpload } from 'apollo-upload-server'
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'kjcoop19@gmail.com',
-    pass: SECRET
+  host: "smtp-mail.outlook.com", // hostname
+  secureConnection: false, // TLS requires secureConnection to be false
+  port: 587, // port for secure SMTP
+  tls: {
+     ciphers:'SSLv3'
   },
+  auth: {
+      user: 'kcoop@live.ca',
+      pass: SECRET
+  }
 })
 
-const processUpload = async upload => {
+const processUpload = async (upload) => {
   const { stream, filename, mimetype, encoding } = await upload
   const { id, path } = await storeFS({ stream, filename })
   return storeDB({ id, filename, mimetype, encoding, path })
@@ -41,7 +46,7 @@ export default {
     allPosts: (parent, args, { models }) => {
       // if args are given with the query (last: 10) it will return the last 10 posts
       const { last, offset } = args
-      
+
       if (!last && !offset) {
         return models.Post.findAll()
       } else if (last && !offset) {
@@ -105,7 +110,6 @@ export default {
       },
     ),
     sendEmail: async (parent, args, { models }) => {
-      
       const { firstName, lastName, emailAddress, subject, text } = args
 
       let response = null
