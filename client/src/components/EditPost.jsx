@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { Row, Col, Input, Button, Select, Form } from 'antd'
-import { graphql, Query, compose, withApollo } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Helmet } from 'react-helmet'
-
 import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
@@ -35,7 +34,6 @@ const highlight = (str, lang) => {
 class EditPost extends Component {
   constructor(props) {
     super(props)
-
     extendObservable(this, {
       id: '',
       title: '',
@@ -54,65 +52,48 @@ class EditPost extends Component {
   }
 
   async componentDidMount() {
-    const slug = this.props.match.params
-
     try {
       const response = await this.props.FindPost.refetch({})
-      const {
-        title,
-        category,
-        markdown,
-        slug,
-        image,
-        id,
-      } = response.data.findPost
-      this.title = title
-      this.category = category
-      this.markdown = markdown
-      this.slug = slug
-      this.image = image
-      this.id = id
+      for (let key in response.data.findPost) {
+        this[key] = response.data.findPost[key]
+      }
     } catch (err) {
       console.log(err)
-
       return
     }
   }
 
+  setStateItemsFalse(itemsArray) {
+    itemsArray.forEach((item) => {
+      this[item] = false
+    })
+  }
+
   onSubmit = async () => {
     const { title, slug, category, markdown, image, id } = this
+    const fieldObject = {
+      title: title,
+      slug: slug,
+      category: category,
+      markdown: markdown,
+      image: image,
+    }
 
-    this.titleError = false
-    this.slugError = false
-    this.categoryError = false
-    this.markdownError = false
-    this.imageError = false
+    this.setStateItemsFalse([
+      'titleError',
+      'slugError',
+      'categoryError',
+      'markdownError',
+      'imageError',
+    ])
 
     let error = false
 
-    if (!title) {
-      this.titleError = true
-      error = true
-    }
-
-    if (!slug) {
-      this.slugError = true
-      error = true
-    }
-
-    if (!category) {
-      this.categoryError = true
-      error = true
-    }
-
-    if (!markdown) {
-      this.markdownError = true
-      error = true
-    }
-
-    if (!image) {
-      this.imageError = true
-      error = true
+    for (let key in fieldObject) {
+      if (!fieldObject[key]) {
+        this[key + 'Error'] = true
+        error = true
+      }
     }
 
     if (!error) {
@@ -121,12 +102,10 @@ class EditPost extends Component {
         await this.props.editPost({
           variables: { title, slug, category, markdown, image, id },
         })
-
         this.successfullyEdited = true
         this.isLoading = false
       } catch (err) {
         console.log(err)
-
         this.isLoading = false
         return
       }
@@ -143,7 +122,6 @@ class EditPost extends Component {
       this.props.history.push('/')
     } catch (err) {
       console.log(err)
-
       return
     }
   }
@@ -361,9 +339,7 @@ const EditPostMutations = compose(
     options: (props) => ({ variables: { slug: props.match.params.slug } }),
   }),
   graphql(editPostMutation, { name: 'editPost' }),
-  graphql(deletePostMutation, {name: 'deletePost' }),
+  graphql(deletePostMutation, { name: 'deletePost' }),
 )(observer(EditPost))
 
 export default EditPostMutations
-
-// export default withApollo(EditPost)

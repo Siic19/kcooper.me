@@ -4,12 +4,11 @@ import { observer } from 'mobx-react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Helmet } from 'react-helmet'
-
 import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
-
 import { Input, Button, Select, Col, Row, Form } from 'antd'
+
 const { TextArea } = Input
 const FormItem = Form.Item
 
@@ -51,6 +50,12 @@ class NewPost extends React.Component {
     })
   }
 
+  setStateFalse(itemsArray) {
+    itemsArray.forEach((item) => {
+      this[item] = false
+    })
+  }
+
   onChange = (e) => {
     const { name, value } = e.target
     this[name] = value
@@ -58,38 +63,29 @@ class NewPost extends React.Component {
 
   onSubmit = async () => {
     const { title, slug, category, markdown, image } = this
+    const fieldObject = {
+      'title': title,
+      'slug': slug,
+      'category': category,
+      'markdown': markdown,
+      'image': image,
+    }
 
-    this.titleError = false
-    this.slugError = false
-    this.categoryError = false
-    this.markdownError = false
-    this.imageError = false
+    this.setStateFalse([
+      'titleError',
+      'slugError',
+      'categoryError',
+      'markdownError',
+      'imageError',
+    ])
 
     let error = false
 
-    if (!title) {
-      this.titleError = true
-      error = true
-    }
-
-    if (!slug) {
-      this.slugError = true
-      error = true
-    }
-
-    if (!category) {
-      this.categoryError = true
-      error = true
-    }
-
-    if (!markdown) {
-      this.markdownError = true
-      error = true
-    }
-
-    if (!image) {
-      this.imageError = true
-      error = true
+    for (let key in fieldObject) {
+      if (!fieldObject[key]) {
+        this[key + 'Error'] = true
+        error = true
+      }
     }
 
     if (!error) {
@@ -272,6 +268,5 @@ const newPostMutation = gql`
     }
   }
 `
-
 
 export default graphql(newPostMutation)(observer(NewPost))

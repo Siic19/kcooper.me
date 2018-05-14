@@ -5,7 +5,6 @@ import PostReturn from './PostReturn'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import decode from 'jwt-decode'
-
 import { Helmet } from 'react-helmet'
 
 const isAuthenticated = () => {
@@ -21,18 +20,13 @@ const isAuthenticated = () => {
 class Post extends Component {
   constructor(props) {
     super(props)
-
     extendObservable(this, {
       isLoggedIn: false,
     })
   }
 
   componentWillMount() {
-    if (isAuthenticated()) {
-      this.isLoggedIn = true
-    } else {
-      this.isLoggedIn = false
-    }
+    isAuthenticated() ? this.LoggedIn = true : this.LoggedIn = false
   }
 
   render() {

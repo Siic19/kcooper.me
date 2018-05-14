@@ -1,10 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-// import { Link } from 'react-router-dom'
 import { HashLink as Link } from 'react-router-hash-link';
-
-// use babel-import-plugin as specified in Ant Design Docs!
-// https://ant.design/docs/react/getting-started#Import-on-Demand
 import { Menu } from 'antd'
 
 
@@ -41,13 +36,6 @@ const MenuMarkup = ({
       </Menu.Item>
     </Menu>
   )
-}
-
-MenuMarkup.propTypes = {
-  mobileVersion: PropTypes.bool,
-  activeLinkKey: PropTypes.string.isRequired,
-  onLinkClick: PropTypes.func,
-  className: PropTypes.string,
 }
 
 MenuMarkup.defaultProps = {

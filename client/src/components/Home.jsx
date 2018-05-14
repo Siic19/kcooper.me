@@ -3,16 +3,11 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom'
 import { lg, md, sm, xs, xxs } from '../lib/gridLayouts'
-
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
-
 import { Responsive, WidthProvider } from 'react-grid-layout'
-
 import HomeMe from './HomeMe'
-
 import { Helmet } from 'react-helmet'
-
 import { Motion, spring } from 'react-motion'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -37,10 +32,7 @@ class Home extends Component {
     const { hoveredID } = this
     return (
       <div>
-        <Query
-          query={allPostsQuery}
-          // pollInterval={500}
-        >
+        <Query query={allPostsQuery}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
             if (error) return `Error! ${error.message}`
@@ -113,7 +105,6 @@ class Home extends Component {
                                   style={{
                                     transform: `translateX(${style.boxX}px)`,
                                     opacity: style.boxOpacity,
-                                    // transform: translateX(-30px);
                                   }}
                                 />
                                 <div className="cell-title">{post.title}</div>

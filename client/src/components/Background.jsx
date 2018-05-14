@@ -1,41 +1,38 @@
 import React, { Component } from 'react'
-
 import BackgroundProjects from './BackgroundProjects'
-
 import { Col, Row, Button, Modal } from 'antd'
-
 import { Helmet } from 'react-helmet'
+import { extendObservable } from 'mobx'
+import { observer } from 'mobx-react'
 
 import heidi from '../images/heidi.jpg'
 import rexi from '../images/rexi-tips-cooper.jpg'
 
 class Background extends Component {
-  state = {
-    heidiVisible: false,
-    rexiVisible: false,
+  constructor(props) {
+    super(props);
+    extendObservable(this, {
+      heidiVisible: false,
+      rexiVisible: false,
+    })
+  }
+  
+  setAllFalse = async () => {
+    this.heidiVisible = false
+    this.rexiVisible = false
   }
 
-  showHeidi = () => {
-    this.setState({
-      heidiVisible: true,
-    })
+  showModal = (e) => {
+    const name = e.target.name
+    this[name] = true
   }
-  showRexi = () => {
-    this.setState({
-      rexiVisible: true,
-    })
-  }
+
   handleOk = (e) => {
-    this.setState({
-      heidiVisible: false,
-      rexiVisible: false,
-    })
+    this.setAllFalse()
   }
+
   handleCancel = (e) => {
-    this.setState({
-      heidiVisible: false,
-      rexiVisible: false,
-    })
+    this.setAllFalse()
   }
 
   render() {
@@ -73,11 +70,11 @@ class Background extends Component {
                   different provinces to accomplish her dream of becoming a
                   practicing lawyer.
                 </p>
-                <Button type="dashed" onClick={this.showHeidi}>
+                <Button type="dashed" name='heidiVisible' onClick={this.showModal}>
                   Picture of always studying Heidi
                 </Button>
                 <Modal
-                  visible={this.state.heidiVisible}
+                  visible={this.heidiVisible}
                   onOk={this.handleOk}
                   onCancel={this.handleCancel}
                 >
@@ -92,11 +89,11 @@ class Background extends Component {
                   Victoria, BC with us under heavy sedation. She is full of
                   personality and makes me laugh every day.
                 </p>
-                <Button type="dashed" onClick={this.showRexi}>
+                <Button type="dashed" name='rexiVisible' onClick={this.showModal}>
                   Picture of the always loving Rexi
                 </Button>
                 <Modal
-                  visible={this.state.rexiVisible}
+                  visible={this.rexiVisible}
                   onOk={this.handleOk}
                   onCancel={this.handleCancel}
                 >
@@ -106,7 +103,7 @@ class Background extends Component {
                 </Modal>
               </div>
               <div className="background-education">
-                <h1>My Education</h1>
+                <h1>Education</h1>
                 <h2>Lighthouse Labs</h2>
                 <i>2017-2018</i>
                 <p>
@@ -119,7 +116,7 @@ class Background extends Component {
                 <p>Two year diploma in Graphic and Media Design.</p>
               </div>
               <div className="background-projects">
-                <h1>My Projects</h1>
+                <h1>Projects</h1>
                 <BackgroundProjects />
               </div>
             </div>
@@ -130,4 +127,4 @@ class Background extends Component {
   }
 }
 
-export default Background
+export default observer(Background)

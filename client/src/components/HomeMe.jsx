@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Col, Row } from 'antd'
-
 import avatar from '../images/kelsey_avatar.svg'
 
 const HomeMe = () => {

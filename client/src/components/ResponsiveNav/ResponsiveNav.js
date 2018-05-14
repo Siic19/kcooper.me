@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import throttle from 'lodash.throttle';
-
-// use babel-import-plugin as specified in Ant Design Docs!
-// https://ant.design/docs/react/getting-started#Import-on-Demand
 import { Popover, Icon } from 'antd'
 
 class ResponsiveNav extends Component {
@@ -60,17 +56,6 @@ class ResponsiveNav extends Component {
     );
   }
 }
-
-ResponsiveNav.propTypes = {
-  mobileBreakPoint: PropTypes.number,
-  applyViewportChange: PropTypes.number,
-  activeLinkKey: PropTypes.string,
-  placement: PropTypes.string,
-  menuMarkup: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.object,
-  ]),
-};
 
 ResponsiveNav.defaultProps = {
   mobileBreakPoint: 575,

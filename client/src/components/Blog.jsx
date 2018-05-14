@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import BlogReturn from './BlogReturn'
-
 import { Row, Col, Icon } from 'antd'
-
 import { Helmet } from 'react-helmet'
 
 class Blog extends Component {
@@ -27,6 +24,7 @@ class Blog extends Component {
       this.offset -= 5
     }
   }
+
   render() {
     const { offset } = this
     return (
@@ -60,7 +58,6 @@ class Blog extends Component {
                 return (
                   <div>
                     {data.allPosts.map((post) => (
-                      // <Link to={{ pathname: `/posts/${post.slug}` }}>
                       <BlogReturn
                         key={post.id}
                         title={post.title}

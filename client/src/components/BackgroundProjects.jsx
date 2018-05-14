@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-
 import { Col, Row, Button, Modal } from 'antd'
-
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
 
@@ -27,7 +25,6 @@ import sass from '../images/sass.svg'
 import socketio from '../images/socketio.svg'
 import stripe from '../images/stripe.svg'
 import shopify from '../images/shopify.svg'
-
 import shopifyappsnap from '../images/shopifyappsnap.gif'
 import shopifyappsnap2 from '../images/shopifyappsnap2.gif'
 

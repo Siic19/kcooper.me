@@ -46,8 +46,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 )
 
-// we need to map the `scale` prop we define below
-// to the transform style property
 function mapStyles(styles) {
   return {
     opacity: styles.opacity,
@@ -55,7 +53,6 @@ function mapStyles(styles) {
   }
 }
 
-// wrap the `spring` helper to use a bouncy config
 function bounce(val) {
   return spring(val, {
     stiffness: 330,
@@ -70,19 +67,15 @@ function bounceLeave(val) {
   })
 }
 
-// child matches will...
 const bounceTransition = {
-  // start in a transparent, upscaled state
   atEnter: {
     opacity: 0,
     scale: 1.2,
   },
-  // leave in a transparent, downscaled state
   atLeave: {
     opacity: bounceLeave(0),
     scale: bounceLeave(0.8),
   },
-  // and rest at an opaque, normally-scaled state
   atActive: {
     opacity: bounce(1),
     scale: bounce(1),

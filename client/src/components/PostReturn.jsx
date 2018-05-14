@@ -1,10 +1,8 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-
 import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
-
 import { Link } from 'react-router-dom'
 
 const highlight = (str, lang) => {
@@ -21,7 +19,6 @@ const highlight = (str, lang) => {
   } catch (err) {
     console.error(err)
   }
-
   return ''
 }
 

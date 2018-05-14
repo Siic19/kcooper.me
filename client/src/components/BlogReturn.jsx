@@ -32,7 +32,9 @@ const BlogReturn = (props) => {
             <div className="blog-title">
               <h1>{title}</h1>
             </div>
-            <div className="blog-date"><span>{category}</span> {dateConfig(createdAt)}</div>
+            <div className="blog-date">
+              <span>{category}</span> {dateConfig(createdAt)}
+            </div>
             <div className="blog-blurb">{getBlurb(markdown)}...</div>
             <div className="blog-link">
               <Link to={{ pathname: `/posts/${slug}` }}>
@@ -41,7 +43,6 @@ const BlogReturn = (props) => {
             </div>
           </div>
         </Col>
-
       </Row>
     </div>
   )

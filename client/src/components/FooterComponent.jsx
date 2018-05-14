@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import { Row, Col, Icon } from 'antd'
 import { extendObservable } from 'mobx'
 import { observer } from 'mobx-react'
-
 import FooterContactForm from './FooterContactForm'
-
 import { BounceLoader } from 'react-spinners'
-
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -34,47 +31,44 @@ class FooterComponent extends Component {
     this[name] = value
   }
 
+  setStateItemsFalse(itemsArray) {
+    itemsArray.forEach(item => {
+      this[item] = false
+    })
+  }
+
   onSubmit = async (e) => {
     const { firstName, lastName, emailAddress, subject, text } = this
+    const fieldObject = {
+      "firstName": firstName,
+      "lastName": lastName,
+      'emailAddress': emailAddress,
+      'subject': subject,
+      'text': text
+    }
 
-    this.firstNameError = false
-    this.lastNameError = false
-    this.emailAddressError = false
-    this.subjectError = false
-    this.textError = false
+    this.setStateItemsFalse([
+      'firstNameError',
+      'lastNameError',
+      'emailAddressError',
+      'subjectError',
+      'textError'
+    ])
 
     let error = false
 
-    if (!firstName) {
-      this.firstNameError = true
-      error = true
-    }
-
-    if (!lastName) {
-      this.lastNameError = true
-      error = true
-    }
-
-    if (!emailAddress) {
-      this.emailAddressError = true
-      error = true
-    }
-
-    if (!subject) {
-      this.subjectError = true
-      error = true
-    }
-
-    if (!text) {
-      this.textError = true
-      error = true
+    for(let key in fieldObject) {
+      if (!fieldObject[key]) {
+        this[key + 'Error'] = true
+        error = true
+      }
     }
 
     if (!error) {
       this.callInProgress = true
       this.callMade = true
       try {
-        const response = await this.props.mutate({
+        await this.props.mutate({
           variables: { firstName, lastName, emailAddress, subject, text },
         })
         this.callInProgress = false

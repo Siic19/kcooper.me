@@ -4,9 +4,7 @@ import { observer } from 'mobx-react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import decode from 'jwt-decode'
-
 import { Helmet } from 'react-helmet'
-
 import { Input, Button, Row, Col, Form, Icon } from 'antd'
 
 const FormItem = Form.Item
@@ -24,7 +22,6 @@ const isAuthenticated = () => {
 class Login extends React.Component {
   constructor(props) {
     super(props)
-
     extendObservable(this, {
       email: '',
       password: '',
@@ -37,19 +34,11 @@ class Login extends React.Component {
   }
 
   componentWillMount() {
-    if (isAuthenticated()) {
-      this.isLoggedIn = true
-    } else {
-      this.isLoggedIn = false
-    }
+    isAuthenticated() ? this.isLoggedIn = true : this.isLoggedIn = false
   }
 
   componentDidUpdate() {
-    if (isAuthenticated()) {
-      this.isLoggedIn = true
-    } else {
-      this.isLoggedIn = false
-    }
+    isAuthenticated() ? this.isLoggedIn = true : this.isLoggedIn = false
   }
 
   onChange = (e) => {
@@ -59,6 +48,10 @@ class Login extends React.Component {
 
   onSubmit = async () => {
     const { email, password } = this
+    const fieldObject = {
+      "email": email,
+      "password": password
+    }
 
     this.emailError = false
     this.passwordError = false
@@ -66,14 +59,11 @@ class Login extends React.Component {
 
     let error = false
 
-    if (!email) {
-      this.emailError = true
-      error = true
-    }
-
-    if (!password) {
-      this.passwordError = true
-      error = true
+    for (let key in fieldObject) {
+      if(!fieldObject[key]){
+        this[key + 'Error'] = true
+        error = true
+      }
     }
 
     if (!error) {
