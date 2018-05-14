@@ -80,7 +80,6 @@ class EditPost extends Component {
   }
 
   onSubmit = async () => {
-    console.log(this.id)
     const { title, slug, category, markdown, image, id } = this
 
     this.titleError = false

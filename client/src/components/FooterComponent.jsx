@@ -78,7 +78,6 @@ class FooterComponent extends Component {
           variables: { firstName, lastName, emailAddress, subject, text },
         })
         this.callInProgress = false
-        console.log(response)
       } catch (err) {
         console.log(err)
 

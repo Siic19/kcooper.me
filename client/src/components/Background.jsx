@@ -26,14 +26,12 @@ class Background extends Component {
     })
   }
   handleOk = (e) => {
-    console.log(e)
     this.setState({
       heidiVisible: false,
       rexiVisible: false,
     })
   }
   handleCancel = (e) => {
-    console.log(e)
     this.setState({
       heidiVisible: false,
       rexiVisible: false,
