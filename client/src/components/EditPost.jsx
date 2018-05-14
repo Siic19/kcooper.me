@@ -141,7 +141,7 @@ class EditPost extends Component {
       await this.props.deletePost({
         variables: { id },
       })
-      //this is where we will redirect
+      this.props.history.push('/')
     } catch (err) {
       console.log(err)
 

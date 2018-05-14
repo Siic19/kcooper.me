@@ -110,10 +110,8 @@ export default {
     editPost: requiresAuth.createResolver(
       async (parent, args, { models, user }) => {
         const { title, slug, category, image, markdown, id } = args
-        // return await models.Post.create(args)
-        let response = null
         try {
-          const something = await models.Post.update(
+          await models.Post.update(
             {
               title: title,
               slug: slug,
@@ -123,6 +121,21 @@ export default {
             },
             { where: { id: id } },
           )
+          return true
+        } catch (err) {
+          return false
+        }
+      },
+    ),
+    deletePost: requiresAuth.createResolver(
+      async (parent, args, { models, user }) => {
+        const { id } = args
+        try {
+          await models.Post.destroy({
+            where: {
+              id: id,
+            },
+          })
           return true
         } catch (err) {
           return false
