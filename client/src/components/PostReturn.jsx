@@ -45,7 +45,7 @@ const PostReturn = (props) => {
             <h1>{title}</h1>
             <div className="post-category"><span>{category}</span></div>
             <div className="post-date">{dateConfig(createdAt)}</div>
-            {isLoggedIn ? <Link to={{ pathname: `/edit-post/${slug}` }}>Edit Post</Link> : <div>not logged in</div>}
+            {isLoggedIn ? <Link to={{ pathname: `/edit-post/${slug}` }}>Edit Post</Link> : null}
           </div>
           <div className="post-content">
             <Markdown options={{ highlight }} source={markdown} />

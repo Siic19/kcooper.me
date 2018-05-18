@@ -26,7 +26,7 @@ class Post extends Component {
   }
 
   componentWillMount() {
-    isAuthenticated() ? this.LoggedIn = true : this.LoggedIn = false
+    isAuthenticated() ? this.isLoggedIn = true : this.isLoggedIn = false
   }
 
   render() {
