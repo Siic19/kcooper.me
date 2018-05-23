@@ -838,13 +838,13 @@ select:-webkit-autofill:focus {
 
 @media all and (min-width: 200px) {
   .vertical-text {
-    font-size: 10vw;
+    font-size: 7vw;
   }
 }
 @media all and (min-width: 300px) {
   .vertical-text {
-    font-size: 9vw;
-    font-size: 11vw;
+    font-size: 8.5vw;
+    padding-left: 5px;
   }
 }
 @media all and (min-width: 400px) {

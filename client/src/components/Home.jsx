@@ -17,7 +17,23 @@ class Home extends Component {
     super(props)
     extendObservable(this, {
       hoveredID: 0,
+      width: 0,
     })
+    this.initUpdateWindowDimensions = this.updateWindowDimensions.bind(this)
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+  }
+
+  componentDidMount() {
+    this.initUpdateWindowDimensions()
+    window.addEventListener('resize', this.updateWindowDimensions)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+  }
+
+  updateWindowDimensions() {
+    this.width = window.innerWidth
   }
 
   dateConfig(date) {
@@ -30,13 +46,20 @@ class Home extends Component {
   render() {
     const layouts = { lg, md, sm, xs, xxs }
     const { hoveredID } = this
+    console.log(this)
+    const tintWidth =  this.width < 991 ? .75 : 0
+    const baseOpacity =  this.width < 991 ? 1 : 0
+    const boxX =  this.width < 991 ? 0 : -25
+    const scale =  this.width < 991 ? 100 : 110
+    const categoryY =  this.width < 991 ? -10 : 0
+    const dateY =  this.width < 991 ? -15 : 0
+
     return (
       <div>
         <Query query={allPostsQuery}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading...'
             if (error) return `Error! ${error.message}`
-
             return (
               <div>
                 <Helmet>
@@ -62,26 +85,31 @@ class Home extends Component {
                     >
                       <Link to={{ pathname: `/posts/${post.slug}` }}>
                         <Motion
+                            // const baseOpacity =  this.width < 991 ? 1 : 0
+                            // const boxX =  this.width < 991 ? 0 : -25
+                            // const scale =  this.width < 991 ? 100 : 110
+                            // const categoryY =  this.width < 991 ? 0 : -10
+                            // const dateY =  this.width < 991 ? 0 : -25
                           defaultStyle={{
-                            opacity: 0,
-                            boxOpacity: 0,
-                            boxX: -25,
-                            scale: 110,
-                            tint: 0,
-                            categoryY: -10,
-                            dateY: -25,
+                            opacity: baseOpacity,
+                            boxOpacity: baseOpacity,
+                            boxX,
+                            scale,
+                            tint: tintWidth, //TODO
+                            categoryY,
+                            dateY,
                           }}
                           style={{
-                            opacity: spring(hoveredID === index + 2 ? 1 : 0),
-                            boxOpacity: spring(hoveredID === index + 2 ? 1 : 0),
-                            boxX: spring(hoveredID === index + 2 ? 0 : -25),
-                            scale: spring(hoveredID === index + 2 ? 100 : 110),
-                            tint: spring(hoveredID === index + 2 ? 0.75 : 0),
+                            opacity: spring(hoveredID === index + 2 ? 1 : baseOpacity),
+                            boxOpacity: spring(hoveredID === index + 2 ? 1 : baseOpacity),
+                            boxX: spring(hoveredID === index + 2 ? 0 : boxX),
+                            scale: spring(hoveredID === index + 2 ? 100 : scale),
+                            tint: spring(hoveredID === index + 2 ? 0.75 : tintWidth), //TODO
                             categoryY: spring(
-                              hoveredID === index + 2 ? -10 : 0,
+                              hoveredID === index + 2 ? -10 : categoryY,
                               { stiffness: 120, damping: 40 },
                             ),
-                            dateY: spring(hoveredID === index + 2 ? -15 : 0, {
+                            dateY: spring(hoveredID === index + 2 ? -15 : dateY, {
                               stiffness: 100,
                               damping: 40,
                             }),
