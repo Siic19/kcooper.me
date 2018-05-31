@@ -425,6 +425,10 @@ pre {
   margin-bottom: 10px;
 }
 
+.post-content img{
+  width: 125%;
+}
+
 .post-content p {
   max-width: 80%;
 }
@@ -764,6 +768,10 @@ select:-webkit-autofill:focus {
     margin-bottom: 15px;
   }
 
+  .post-content img{
+    width: 110%;
+  }
+
   .post-content p {
     max-width: 90%;
   }
@@ -782,6 +790,10 @@ select:-webkit-autofill:focus {
 @media all and (max-width: 575px) {
   .blog-image {
     height: 400px;
+  }
+
+  .post-content img{
+    width: 100%;
   }
 
   .post-content p {
@@ -834,17 +846,24 @@ select:-webkit-autofill:focus {
   .vertical-home-text {
     height: 200px;
   }
+  .background-stack {
+    max-width: 100%;
+  }
 }
 
 @media all and (min-width: 200px) {
   .vertical-text {
     font-size: 7vw;
   }
+
 }
 @media all and (min-width: 300px) {
   .vertical-text {
     font-size: 8.5vw;
     padding-left: 5px;
+  }
+  .background-stack {
+    max-width: 100%;
   }
 }
 @media all and (min-width: 400px) {
@@ -855,6 +874,15 @@ select:-webkit-autofill:focus {
 @media all and (min-width: 500px) {
   .vertical-text {
     font-size: 11vw;
+  }
+  .background-stack {
+    max-width: 80%;
+  }
+}
+
+@media all and (min-width: 600px) {
+  .background-stack {
+    max-width: 90%;
   }
 }
 
@@ -868,12 +896,18 @@ select:-webkit-autofill:focus {
     letter-spacing: 32px;
     height: 200px;
   }
+  .background-stack {
+    max-width: 90%;
+  }
 }
 @media all and (min-width: 800px) {
   .vertical-home-text {
     font-size: 10em;
     letter-spacing: 42px;
     height: 200px;
+  }
+  .background-stack {
+    max-width: 100%;
   }
 }
 @media all and (min-width: 900px) {

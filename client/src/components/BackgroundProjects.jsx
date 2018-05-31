@@ -30,7 +30,7 @@ import shopifyappsnap2 from '../images/shopifyappsnap2.gif'
 
 const StackIcon = (stack) => {
   return (
-    <Col className="stack-icons" xs={4} sm={3} md={2} lg={2} xl={2}>
+    <Col className="stack-icons"  xs={6} sm={3} md={2} lg={2} xl={2}>
       <img src={stack.icon} alt={stack.name} />
       <br />
       <span>{stack.name}</span>
