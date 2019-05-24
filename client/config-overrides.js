@@ -3,9 +3,10 @@ const rewireLess = require('react-app-rewire-less')
 
 module.exports = function override(config, env) {
   config = injectBabelPlugin(
-    ['import', { libraryName: 'antd', style: true }],
+    ['import', { libraryName: 'antd', style: true, }],
     config)
   config = rewireLess.withLoaderOptions({
+    javascriptEnabled: true,
     modifyVars: {
       '@body-background': '#e8e8e8',
       '@primary-color': '#64A5BC',

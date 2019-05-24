@@ -9,8 +9,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 const SECRET = process.env.GMAIL_SECRET
 
-import { GraphQLUpload } from 'apollo-upload-server'
-
 const transporter = nodemailer.createTransport({
   host: 'smtp-mail.outlook.com', // hostname
   secureConnection: false, // TLS requires secureConnection to be false
@@ -23,12 +21,6 @@ const transporter = nodemailer.createTransport({
     pass: SECRET,
   },
 })
-
-const processUpload = async (upload) => {
-  const { stream, filename, mimetype, encoding } = await upload
-  const { id, path } = await storeFS({ stream, filename })
-  return storeDB({ id, filename, mimetype, encoding, path })
-}
 
 export default {
   Query: {

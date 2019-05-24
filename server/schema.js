@@ -4,8 +4,8 @@ export default `
     id: Int!
     username: String!
     email: String!
-    createdAt: String
-    updatedAt: String
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Post {
@@ -29,7 +29,7 @@ export default `
     updateUser(username: String!, newUsername: String!): [Int!]!
     deleteUser(username: String!): Int!
     register(username: String!, email: String!, password: String!): User!
-    login(email: String!, password: String!): String! 
+    login(email: String!, password: String!): String!
     createPost(title: String!, slug: String!, category: String!, markdown: String!, image: String!): Post!
     editPost(title: String!, slug: String!, category: String!, markdown: String!, image: String!, id: Int!): Boolean!
     deletePost(id: Int!): Boolean!

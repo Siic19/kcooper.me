@@ -1,13 +1,15 @@
 import Sequelize from 'sequelize';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 const sequelize = new Sequelize(
-  'test_graphql_db',
-  'test_graphql_admin',
-  'iamapassword',
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
     host: 'localhost',
     dialect: 'postgres',
-    operatorsAliases: false,
   },
 );
 
@@ -16,13 +18,6 @@ const db = {
   Post: sequelize.import('./post'),
 };
 
-// Object.keys(db).forEach((modelName) => {
-//   if ('associate' in db[modelName]) {
-//     db[modelName].associate(db);
-//   }
-// });
-
 db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
 
 export default db;
