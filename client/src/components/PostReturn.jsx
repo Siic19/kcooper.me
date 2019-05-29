@@ -4,6 +4,7 @@ import Markdown from 'react-remarkable'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/dracula.css'
 import { Link } from 'react-router-dom'
+import { dateConfig } from './helpers/date'
 
 const highlight = (str, lang) => {
   if (lang && hljs.getLanguage(lang)) {
@@ -20,13 +21,6 @@ const highlight = (str, lang) => {
     console.error(err)
   }
   return ''
-}
-
-function dateConfig(date) {
-  const dateSplit = date.split(' ', 4)
-  dateSplit.shift()
-  dateSplit[1] = dateSplit[1] += ','
-  return dateSplit.join(' ')
 }
 
 const PostReturn = (props) => {

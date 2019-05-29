@@ -9,6 +9,7 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 import HomeMe from './HomeMe'
 import { Helmet } from 'react-helmet'
 import { Motion, spring } from 'react-motion'
+import { dateConfig } from './helpers/date'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -36,17 +37,9 @@ class Home extends Component {
     this.width = window.innerWidth
   }
 
-  dateConfig(date) {
-    const dateSplit = date.split(' ', 4)
-    dateSplit.shift()
-    dateSplit[1] = dateSplit[1] += ','
-    return dateSplit.join(' ')
-  }
-
   render() {
     const layouts = { lg, md, sm, xs, xxs }
     const { hoveredID } = this
-    console.log(this)
     const tintWidth =  this.width < 991 ? .75 : 0
     const baseOpacity =  this.width < 991 ? 1 : 0
     const boxX =  this.width < 991 ? 0 : -25
@@ -85,11 +78,6 @@ class Home extends Component {
                     >
                       <Link to={{ pathname: `/posts/${post.slug}` }}>
                         <Motion
-                            // const baseOpacity =  this.width < 991 ? 1 : 0
-                            // const boxX =  this.width < 991 ? 0 : -25
-                            // const scale =  this.width < 991 ? 100 : 110
-                            // const categoryY =  this.width < 991 ? 0 : -10
-                            // const dateY =  this.width < 991 ? 0 : -25
                           defaultStyle={{
                             opacity: baseOpacity,
                             boxOpacity: baseOpacity,
@@ -154,7 +142,7 @@ class Home extends Component {
                                     transform: `translateY(${style.dateY}px)`,
                                   }}
                                 >
-                                  {this.dateConfig(post.createdAt)}
+                                  {dateConfig(post.createdAt)}
                                 </div>
                               </div>
                             </div>

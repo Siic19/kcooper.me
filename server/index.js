@@ -3,14 +3,11 @@ import bodyParser from 'body-parser';
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
 import typeDefs from './schema';
 import resolvers from './resolvers';
 import models from './models';
-
-dotenv.config();
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -56,4 +53,8 @@ app.use(
   })),
 );
 
-models.sequelize.sync().then(() => app.listen(3001));
+const port = process.env.PORT || 3001;
+
+models.sequelize.sync().then(() => app.listen(port, function() {
+  console.log(`Server started....... on ${port}`);
+}));

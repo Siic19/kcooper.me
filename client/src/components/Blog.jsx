@@ -58,6 +58,7 @@ class Blog extends Component {
                 return (
                   <div>
                     {data.allPosts.map((post) => (
+
                       <BlogReturn
                         key={post.id}
                         title={post.title}
@@ -66,7 +67,8 @@ class Blog extends Component {
                         image={post.image}
                         createdAt={post.createdAt}
                         slug={post.slug}
-                      />
+                      >
+                      </BlogReturn>
                     ))}
                   </div>
                 )

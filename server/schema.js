@@ -4,8 +4,8 @@ export default `
     id: Int!
     username: String!
     email: String!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: String
+    updatedAt: String
   }
 
   type Post {

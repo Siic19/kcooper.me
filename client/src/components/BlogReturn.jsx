@@ -1,13 +1,7 @@
 import React from 'react'
 import { Row, Col, Button } from 'antd'
 import { Link } from 'react-router-dom'
-
-function dateConfig(date) {
-  const dateSplit = date.split(' ', 4)
-  dateSplit.shift()
-  dateSplit[1] = dateSplit[1] += ','
-  return dateSplit.join(' ')
-}
+import { dateConfig } from './helpers/date'
 
 function getBlurb(markdown) {
   const blurbSplit = markdown.split(' ', 20)

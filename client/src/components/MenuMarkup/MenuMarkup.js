@@ -1,6 +1,18 @@
 import React from 'react'
 import { HashLink as Link } from 'react-router-hash-link';
 import { Menu } from 'antd'
+import decode from 'jwt-decode'
+
+const isAuthenticated = () => {
+  const token = localStorage.getItem('token')
+  try {
+    decode(token)
+  } catch (err) {
+    return false
+  }
+
+  return true
+}
 
 
 const MenuMarkup = ({
@@ -34,6 +46,15 @@ const MenuMarkup = ({
       <Menu.Item key="contact">
         <Link smooth to="#contact">Contact</Link>
       </Menu.Item>
+      {isAuthenticated() ? (
+        <Menu.Item key="/new-post">
+          <Link to="/new-post">New Post</Link>
+        </Menu.Item>
+      ) : (
+      <Menu.Item key="login">
+        <Link smooth to="/login">Login</Link>
+      </Menu.Item>
+      )}
     </Menu>
   )
 }
