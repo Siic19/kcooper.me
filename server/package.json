@@ -23,7 +23,7 @@
     "graphql-server-express": "^1.4.0",
     "graphql-tools": "^4.0.4",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "nodemailer": "^6.1.1",
     "pg": "^7.11.0",
     "postmark": "^2.2.5",
